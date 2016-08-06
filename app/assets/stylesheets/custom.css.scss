@@ -14,6 +14,10 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 
+.container {
+	width: 1300px;
+}
+
 section{
 	overflow:auto;
 }
@@ -54,6 +58,15 @@ h2 {
 p {
 	font-size: 1.1em;
 	line-height: 1.7em;
+}
+
+.main-back-color{
+	background: #f4f4f4
+}
+
+.right-sidebar {
+	border-left-color: #c72931;
+	border-top: 2px solid #333;
 }
 
 /* header */
@@ -155,3 +168,83 @@ aside {
   right: 0;
   bottom: 0;
 }
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.header-link{
+	margin-top:14px;
+	font-size:1.1em;
+}
+
+.start-message {
+    margin: 40px 0 80px 0;
+    font-family: 'officina_sans_itc_t_otbold';
+    font-size: 18px;
+    color: #777;
+    text-align: center;
+}
+
+select.error, input.error{
+	border: 2px solid red;
+  background-color: #FFFFD5;
+}
+
+label.error{
+	font-style: italic;
+	color: red;
+}
+
+.picture{
+	margin-top: 10px;
+	input {
+		border: 0;
+	}
+}
+
+.img-pad{
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+.infos {
+	margin-top:20px;
+	font-size:1.1em;
+}
+
+.no-image-placeholder {
+	margin: auto;
+	padding: 25px;
+}
+
+.thumbnail{
+	height: 420px;
+}
+
+.comments-page{
+	background-color: #E8EDEE;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 20px;
+  margin-left: 15px;
+}
+
+.comment{
+ 	list-style-type: none;
+ 	margin-left: 10px;
+ 	margin-top: 10px;
+ 	padding-left: 20px; 
+ }
+
