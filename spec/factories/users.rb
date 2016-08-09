@@ -15,5 +15,10 @@ FactoryGirl.define do
     end
   end
 
+  factory :other_user, parent: :user do
+    firstname "Other"
+    lastname "User"
+    password "otheruser"
+  end
   
 end
