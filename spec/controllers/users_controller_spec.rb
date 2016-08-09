@@ -24,6 +24,7 @@ RSpec.describe UsersController, type: :controller do
 		context "non-authenticated user" do
 			it "redirect to login page" do
 				get :show, id: user
+				expect(flash[:alert]).to eq(I18n.translate 'devise.failure.unauthenticated')
 				expect(response).to redirect_to new_user_session_path
 			end
 		end
