@@ -58,6 +58,7 @@ group :test do
   	gem 'factory_girl_rails'
     gem 'database_cleaner'
     gem 'rails-controller-testing'
+    gem "show_me_the_cookies"
 end
 
 group :production do

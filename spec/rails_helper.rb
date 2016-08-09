@@ -70,4 +70,6 @@ RSpec.configure do |config|
     config.include ::Rails::Controller::Testing::TemplateAssertions, :type => type
     config.include ::Rails::Controller::Testing::Integration, :type => type
   end
+
+  config.include ShowMeTheCookies, :type => :feature
 end
