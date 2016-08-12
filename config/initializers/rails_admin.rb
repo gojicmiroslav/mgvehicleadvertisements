@@ -2,7 +2,12 @@ RailsAdmin.config do |config|
 
   config.authenticate_with do
       authenticate_or_request_with_http_basic('Site Message') do |username, password|
-      username == 'someone' && password == 'secrets777'
+
+      if Rails.env.production?
+        username == ENV['ADMIN_USERNAME'] && password == ENV['ADMIN_PASSWORD']
+      else
+        username == 'someone' && password == 'secrets777'
+      end
     end
   end
 
