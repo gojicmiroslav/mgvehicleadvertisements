@@ -12,7 +12,7 @@ VehicleBrand.destroy_all
 
 User.create!(firstname: "Miroslav",
 			lastname: "Gojic",
-			email: "miroslavy2k@gmail.com",
+			email: "miroslavy22k@gmail.com",
 			password: "password123",
 			password_confirmation: "password123",
 			confirmed_at: Time.zone.now )

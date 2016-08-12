@@ -1,4 +1,4 @@
-class CreateJoinTableCategoryVehicleBrand < ActiveRecord::Migration[5.0]
+class CreateJoinTableCategoriesVehicleBrands < ActiveRecord::Migration[5.0]
   def change
   	create_table :categories_vehicle_brands, id: false do |t|
    		t.references :category, null: false, index: true
