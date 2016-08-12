@@ -3,6 +3,7 @@ class VehicleBrand < ApplicationRecord
 	accepts_nested_attributes_for :categories, :allow_destroy => true
 
 	has_many :vehicle_models
+	accepts_nested_attributes_for :vehicle_models
  	
 	validates :name, presence: :true
 end
