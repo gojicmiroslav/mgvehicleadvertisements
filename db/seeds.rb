@@ -12,6 +12,7 @@ Style.destroy_all
 AdvertisementType.destroy_all
 Category.destroy_all
 VehicleBrand.destroy_all
+Fuel.destroy_all
 
 User.create!(firstname: "Miroslav",
 			lastname: "Gojic",
