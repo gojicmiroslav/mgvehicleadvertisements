@@ -1,3 +1,3 @@
-class Option < ApplicationRecord
+class Style < ApplicationRecord
 	validates :name, presence: :true
 end

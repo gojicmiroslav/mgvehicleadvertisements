@@ -7,9 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Users
 User.destroy_all
+VehicleModel.destroy_all
+Style.destroy_all
+AdvertisementType.destroy_all
 Category.destroy_all
 VehicleBrand.destroy_all
-VehicleModel.destroy_all
 
 User.create!(firstname: "Miroslav",
 			lastname: "Gojic",
@@ -640,3 +642,15 @@ vm.save
 AdvertisementType.create!(name: "New")
 AdvertisementType.create!(name: "Used")
 
+Style.create!(name: "AWD/4WD")
+Style.create!(name: "Commercial")
+Style.create!(name: "Convertible")
+Style.create!(name: "Coupe")
+Style.create!(name: "Hatchback")
+Style.create!(name: "Hybrid/Electric")
+Style.create!(name: "Luxury")
+Style.create!(name: "Sedan")
+Style.create!(name: "SUV/Crossover")
+Style.create!(name: "Truck")
+Style.create!(name: "Van/Minivan")
+Style.create!(name: "Wagon")
