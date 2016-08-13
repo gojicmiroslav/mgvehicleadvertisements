@@ -14,6 +14,7 @@ Category.destroy_all
 VehicleBrand.destroy_all
 Fuel.destroy_all
 Transmission.destroy_all
+Drive.destroy_all
 
 User.create!(firstname: "Miroslav",
 			lastname: "Gojic",
@@ -669,3 +670,11 @@ Transmission.create!(name: "Manual")
 Transmission.create!(name: "Semi-automatic")
 Transmission.create!(name: "CVT")
 Transmission.create!(name: "Other") 
+
+Drive.create!(name: "FWD")
+Drive.create!(name: "RWD")
+Drive.create!(name: "AWD")
+Drive.create!(name: "4WD")
+Drive.create!(name: "4x4")
+Drive.create!(name: "4x2")
+Drive.create!(name: "Other") 
