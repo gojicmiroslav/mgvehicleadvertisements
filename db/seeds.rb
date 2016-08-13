@@ -15,6 +15,7 @@ VehicleBrand.destroy_all
 Fuel.destroy_all
 Transmission.destroy_all
 Drive.destroy_all
+Engine.destroy_all
 
 User.create!(firstname: "Miroslav",
 			lastname: "Gojic",
@@ -678,3 +679,14 @@ Drive.create!(name: "4WD")
 Drive.create!(name: "4x4")
 Drive.create!(name: "4x2")
 Drive.create!(name: "Other") 
+
+Engine.create!(name: "3 cylinder")
+Engine.create!(name: "4 cylinder")
+Engine.create!(name: "5 cylinder")
+Engine.create!(name: "6 cylinder")
+Engine.create!(name: "8 cylinder")
+Engine.create!(name: "10 cylinder")
+Engine.create!(name: "12 cylinder")
+Engine.create!(name: "Electric")
+Engine.create!(name: "Hybrid")
+Engine.create!(name: "Rotary Engine")
