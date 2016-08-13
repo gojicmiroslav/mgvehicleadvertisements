@@ -13,6 +13,7 @@ AdvertisementType.destroy_all
 Category.destroy_all
 VehicleBrand.destroy_all
 Fuel.destroy_all
+Transmission.destroy_all
 
 User.create!(firstname: "Miroslav",
 			lastname: "Gojic",
@@ -662,3 +663,9 @@ Fuel.create!(name: "Gasoline + Gas(TNG)")
 Fuel.create!(name: "Hybrid")
 Fuel.create!(name: "Electric")
 Fuel.create!(name: "Alternate") 
+
+Transmission.create!(name: "Automatic")
+Transmission.create!(name: "Manual")
+Transmission.create!(name: "Semi-automatic")
+Transmission.create!(name: "CVT")
+Transmission.create!(name: "Other") 
