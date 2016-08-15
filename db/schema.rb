@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815132526) do
+ActiveRecord::Schema.define(version: 20160815142538) do
 
   create_table "advertisement_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -21,9 +21,40 @@ ActiveRecord::Schema.define(version: 20160815132526) do
 
   create_table "advertisements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.text     "description",           limit: 65535
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "fuel_id"
+    t.integer  "style_id"
+    t.integer  "air_condition_id"
+    t.integer  "exterior_color_id"
+    t.integer  "interior_color_id"
+    t.integer  "engine_id"
+    t.integer  "drive_id"
+    t.integer  "transmission_id"
+    t.integer  "category_id"
+    t.integer  "vehicle_model_id"
+    t.integer  "user_id"
+    t.integer  "advertisement_type_id"
+    t.index ["advertisement_type_id"], name: "index_advertisements_on_advertisement_type_id", using: :btree
+    t.index ["air_condition_id"], name: "index_advertisements_on_air_condition_id", using: :btree
+    t.index ["category_id"], name: "index_advertisements_on_category_id", using: :btree
+    t.index ["drive_id"], name: "index_advertisements_on_drive_id", using: :btree
+    t.index ["engine_id"], name: "index_advertisements_on_engine_id", using: :btree
+    t.index ["exterior_color_id"], name: "index_advertisements_on_exterior_color_id", using: :btree
+    t.index ["fuel_id"], name: "index_advertisements_on_fuel_id", using: :btree
+    t.index ["interior_color_id"], name: "index_advertisements_on_interior_color_id", using: :btree
+    t.index ["style_id"], name: "index_advertisements_on_style_id", using: :btree
+    t.index ["transmission_id"], name: "index_advertisements_on_transmission_id", using: :btree
+    t.index ["user_id"], name: "index_advertisements_on_user_id", using: :btree
+    t.index ["vehicle_model_id"], name: "index_advertisements_on_vehicle_model_id", using: :btree
+  end
+
+  create_table "advertisements_options", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "advertisement_id", null: false
+    t.integer "option_id",        null: false
+    t.index ["advertisement_id"], name: "index_advertisements_options_on_advertisement_id", using: :btree
+    t.index ["option_id"], name: "index_advertisements_options_on_option_id", using: :btree
   end
 
   create_table "air_conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -128,6 +159,20 @@ ActiveRecord::Schema.define(version: 20160815132526) do
     t.index ["vehicle_brand_id"], name: "index_vehicle_models_on_vehicle_brand_id", using: :btree
   end
 
+  add_foreign_key "advertisements", "advertisement_types", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "advertisements", "air_conditions", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "advertisements", "categories", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "advertisements", "colors", column: "exterior_color_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "advertisements", "colors", column: "interior_color_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "advertisements", "drives", column: "drive_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "advertisements", "engines", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "advertisements", "fuels", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "advertisements", "styles", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "advertisements", "transmissions", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "advertisements", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "advertisements", "vehicle_models", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "advertisements_options", "advertisements"
+  add_foreign_key "advertisements_options", "options"
   add_foreign_key "categories_vehicle_brands", "categories"
   add_foreign_key "categories_vehicle_brands", "vehicle_brands"
   add_foreign_key "vehicle_models", "categories"
