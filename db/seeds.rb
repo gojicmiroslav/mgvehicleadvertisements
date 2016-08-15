@@ -17,6 +17,7 @@ Transmission.destroy_all
 Drive.destroy_all
 Engine.destroy_all
 Color.destroy_all
+AirCondition.destroy_all
 
 User.create!(firstname: "Miroslav",
 			lastname: "Gojic",
@@ -711,3 +712,7 @@ Color.create!(name: "Tan")
 Color.create!(name: "Turquoise")
 Color.create!(name: "White")
 Color.create!(name: "Yellow")
+
+AirCondition.create!(name: "Automatic")
+AirCondition.create!(name: "Manual")
+AirCondition.create!(name: "None") 
