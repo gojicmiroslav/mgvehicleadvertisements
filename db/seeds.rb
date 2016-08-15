@@ -16,6 +16,7 @@ Fuel.destroy_all
 Transmission.destroy_all
 Drive.destroy_all
 Engine.destroy_all
+Color.destroy_all
 
 User.create!(firstname: "Miroslav",
 			lastname: "Gojic",
@@ -690,3 +691,23 @@ Engine.create!(name: "12 cylinder")
 Engine.create!(name: "Electric")
 Engine.create!(name: "Hybrid")
 Engine.create!(name: "Rotary Engine")
+
+Color.create!(name: "Beige")
+Color.create!(name: "Blue")
+Color.create!(name: "Black")
+Color.create!(name: "Burgundy")
+Color.create!(name: "Charcoal")
+Color.create!(name: "Gold")
+Color.create!(name: "Gray")
+Color.create!(name: "Green")
+Color.create!(name: "Off White")
+Color.create!(name: "Orange")
+Color.create!(name: "Pink")
+Color.create!(name: "Beige")
+Color.create!(name: "Purple")
+Color.create!(name: "Red")
+Color.create!(name: "Silver")
+Color.create!(name: "Tan")
+Color.create!(name: "Turquoise")
+Color.create!(name: "White")
+Color.create!(name: "Yellow")
