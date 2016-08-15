@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815131226) do
+ActiveRecord::Schema.define(version: 20160815132526) do
 
   create_table "advertisement_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "advertisements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
     t.text     "description", limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
