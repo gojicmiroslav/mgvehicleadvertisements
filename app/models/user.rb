@@ -5,5 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
 	validates :firstname,  presence: true, length: { maximum: 100 }    
-    validates :lastname,  presence: true, length: { maximum: 100 }     
+    validates :lastname,  presence: true, length: { maximum: 100 } 
+
+    has_many :advertisements    
 end

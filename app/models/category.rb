@@ -5,5 +5,7 @@ class Category < ApplicationRecord
  	has_many :vehicle_models
  	accepts_nested_attributes_for :vehicle_models, :allow_destroy => true
 
+ 	has_many :advertisements
+
 	validates :name, presence: :true
 end
