@@ -1,0 +1,71 @@
+3_rd_row_seats:
+ name: 3rd Row Seats
+
+power_locks:
+ name: Power Locks
+
+cd_player:
+ name: CD Player
+
+premium_audio:
+ name: Premium Audio
+
+sunroof:
+ name: Sunroof
+
+trailer_hitch:
+ name: Trailer Hitch
+
+backup_camera:
+ name: Backup Camera
+
+power_windows:
+ name: Power Windows
+
+dvd_player:
+ name: DVD Player  
+
+security_system:
+ name: Security System
+
+premium_wheels:
+ name: Premium Wheels
+
+cruise_control:
+ name: Cruise Control
+
+steering_wheel_system:
+ name: Steering Wheel System
+
+navigation:
+ name: Navigation
+
+heated_seats:
+ name: Heated Seats
+
+disability_equipped:
+ name: Disability Equipped
+
+keyless_entry:
+ name: Keyless Entry
+
+bluetooth:
+ name: Bluetooth(Hands-Free)
+
+portable_audio_connection:
+ name: Portable Audio Connection
+
+leather_seats:
+ name: Leather Seats 
+
+lift_kit:
+ name: Lift Kit
+
+back_break:
+ name: Back Break
+
+lights:
+ name: Lights   
+
+hands_break:
+ name: Hands Break

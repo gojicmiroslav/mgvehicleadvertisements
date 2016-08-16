@@ -1,0 +1,31 @@
+opel:
+ name: Opel
+ categories: cars
+
+volkswagen:
+ name: Volkswagen
+ categories: cars, trucks
+
+mercedes:
+ name: Mercedes
+ categories: cars, trucks
+
+renault:
+ name: Renault
+ categories: cars
+
+boardman:
+ name: Boardman
+ categories: bicycles 
+
+carrera:
+ name: Carrera
+ categories: bicycles 
+
+apollo:
+ name: Apollo
+ categories: bicycles 
+
+raleigh:
+ name: Raleigh
+ categories: bicycles  

@@ -1,0 +1,45 @@
+first_advertisement:
+ title: 2010 BMW 530 D GT
+ description: Some description
+ capacity: 2000
+ power: 2000
+ mileage: 100000
+ price: <%= Faker::Number.decimal(2) %>
+ year: <%= Time.now - 1.days  %>
+ created_at: <%= Time.now %>
+ category: cars
+ vehicle_model: astra_g
+ user: miroslav
+ advertisement_type: used
+ options: power_locks, cd_player, sunroof
+
+second_advertisement:
+ title: Mountain Bike Boardman
+ description: Some description
+ capacity: 2000
+ power: 2000
+ mileage: 100000
+ price: <%= Faker::Number.decimal(2) %>
+ year: <%= Time.now - 1.days %>
+ created_at: <%= Time.now %>
+ category: bicycles
+ vehicle_model: mountain_one
+ user: miroslav
+ advertisement_type: used
+ options: heated_seats, steering_wheel_system, hands_break, lights, back_break
+
+third_advertisement:
+ title: <%= Faker::Lorem.sentence(3, true) %>
+ description: <%= Faker::Lorem.sentence %>
+ capacity: 2000
+ power: 2000
+ mileage: 100000
+ price: <%= Faker::Number.decimal(2) %>
+ year: <%= Time.now - 2.days  %>
+ created_at: <%= Time.now - 12.days  %>
+ category: cars
+ vehicle_model: astra_g
+ user: miroslav
+ advertisement_type: used
+ options: 3_rd_row_seats, power_locks, cd_player, sunroof, dvd_player, security_system, navigation
+

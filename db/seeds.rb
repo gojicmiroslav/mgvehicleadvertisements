@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-# Users
+
 Advertisement.destroy_all
 Style.destroy_all
 Transmission.destroy_all
@@ -18,81 +18,72 @@ AirCondition.destroy_all
 VehicleModel.destroy_all
 Category.destroy_all
 VehicleBrand.destroy_all
+Option.destroy_all
 User.destroy_all
 AdvertisementType.destroy_all
 
-User.create!(firstname: "Miroslav",
-			lastname: "Gojic",
-			email: "miroslavy22k@gmail.com",
-			password: "password123",
-			password_confirmation: "password123",
-			confirmed_at: Time.zone.now )
 
-User.create!(firstname: "Pera",
-			lastname: "Peric",
-			email: "pera@gmail.com",
-			password: "password123",
-			password_confirmation: "password123",
-			confirmed_at: Time.zone.now )
+# Users
+User.create!(	firstname: "Miroslav",
+							lastname: "Gojic",
+							email: "miroslavy2k@gmail.com",
+							password: "deronje777",
+							password_confirmation: "deronje777",
+							confirmed_at: Time.zone.now )
 
-User.create!(firstname: "Maja",
-			lastname: "Mudrinic",
-			email: "maja@gmail.com",
-			password: "password123",
-			password_confirmation: "password123",
-			confirmed_at: Time.zone.now )
+User.create!(	firstname: "Pera",
+							lastname: "Peric",
+							email: "pera@gmail.com",
+							password: "deronje777",
+							password_confirmation: "deronje777",
+							confirmed_at: Time.zone.now )
+
+User.create!(	firstname: "Maja",
+							lastname: "Mudrinic",
+							email: "maja@gmail.com",
+							password: "deronje777",
+							password_confirmation: "deronje777",
+							confirmed_at: Time.zone.now )
 
 Category.create!(name: "Cars", 
-				 description: "Contrary to popular belief, Lorem Ipsum is not simply random text. 
-						It has roots in a piece of classical Latin literature from 45 BC, making it 
-						over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney 
-						College in Virginia, looked up one of the more obscure Latin words, 
-						consectetur, from a Lorem Ipsum passage, and going through the cites of the 
-						word in classical literature, discovered the undoubtable source. 
-						Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 
-						de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, 
-						written in 45 BC. This book is a treatise on the theory of ethics, 
-						very popular during the Renaissance. The first line of Lorem Ipsum, 
-						Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.")
+								 description: "Contrary to popular belief, Lorem Ipsum is not simply random text. 
+								 							It has roots in a piece of classical Latin literature from 45 BC, making it 
+								 							over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney 
+								 							College in Virginia, looked up one of the more obscure Latin words, 
+								 							consectetur, from a Lorem Ipsum passage, and going through the cites of the 
+								 							word in classical literature, discovered the undoubtable source. 
+								 							Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 
+								 							de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, 
+								 							written in 45 BC. This book is a treatise on the theory of ethics, 
+								 							very popular during the Renaissance. The first line of Lorem Ipsum, 
+								 							Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.")
 
 Category.create!(name: "Bicycles", 
-				 description: "Contrary to popular belief, Lorem Ipsum is not simply random text. 
-						It has roots in a piece of classical Latin literature from 45 BC, making it 
-						over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney 
-						College in Virginia, looked up one of the more obscure Latin words, 
-						consectetur, from a Lorem Ipsum passage, and going through the cites of the 
-						word in classical literature, discovered the undoubtable source. 
-						Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 
-						de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, 
-						written in 45 BC. This book is a treatise on the theory of ethics, 
-						very popular during the Renaissance. The first line of Lorem Ipsum, 
-						Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.")
+								 description: "Contrary to popular belief, Lorem Ipsum is not simply random text. 
+								 							It has roots in a piece of classical Latin literature from 45 BC, making it 
+								 							over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney 
+								 							College in Virginia, looked up one of the more obscure Latin words, 
+								 							consectetur, from a Lorem Ipsum passage, and going through the cites of the 
+								 							word in classical literature, discovered the undoubtable source. 
+								 							Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 
+								 							de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, 
+								 							written in 45 BC. This book is a treatise on the theory of ethics, 
+								 							very popular during the Renaissance. The first line of Lorem Ipsum, 
+								 							Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.")
 
 Category.create!(name: "Trucks", 
-				 description: "Contrary to popular belief, Lorem Ipsum is not simply random text. 
-						It has roots in a piece of classical Latin literature from 45 BC, making it 
-						over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney 
-						College in Virginia, looked up one of the more obscure Latin words, 
-						consectetur, from a Lorem Ipsum passage, and going through the cites of the 
-						word in classical literature, discovered the undoubtable source. 
-						Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 
-						de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, 
-						written in 45 BC. This book is a treatise on the theory of ethics, 
-						very popular during the Renaissance. The first line of Lorem Ipsum, 
-						Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.")
+								 description: "Contrary to popular belief, Lorem Ipsum is not simply random text. 
+								 							It has roots in a piece of classical Latin literature from 45 BC, making it 
+								 							over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney 
+								 							College in Virginia, looked up one of the more obscure Latin words, 
+								 							consectetur, from a Lorem Ipsum passage, and going through the cites of the 
+								 							word in classical literature, discovered the undoubtable source. 
+								 							Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 
+								 							de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, 
+								 							written in 45 BC. This book is a treatise on the theory of ethics, 
+								 							very popular during the Renaissance. The first line of Lorem Ipsum, 
+								 							Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.")
 
-Category.create!(name: "Boats", 
-				 description: "Contrary to popular belief, Lorem Ipsum is not simply random text. 
-						It has roots in a piece of classical Latin literature from 45 BC, making it 
-						over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney 
-						College in Virginia, looked up one of the more obscure Latin words, 
-						consectetur, from a Lorem Ipsum passage, and going through the cites of the 
-						word in classical literature, discovered the undoubtable source. 
-						Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 
-						de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, 
-						written in 45 BC. This book is a treatise on the theory of ethics, 
-						very popular during the Renaissance. The first line of Lorem Ipsum, 
-						Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.")
 
 # CARS
 vb = VehicleBrand.new(name: "AC")
@@ -650,6 +641,9 @@ vm.save
 AdvertisementType.create!(name: "New")
 AdvertisementType.create!(name: "Used")
 
+# OPTIONS
+
+# STYLES
 Style.create!(name: "AWD/4WD")
 Style.create!(name: "Commercial")
 Style.create!(name: "Convertible")
@@ -668,13 +662,13 @@ Fuel.create!(name: "Diesel")
 Fuel.create!(name: "Gasoline + Gas(TNG)")
 Fuel.create!(name: "Hybrid")
 Fuel.create!(name: "Electric")
-Fuel.create!(name: "Alternate") 
+Fuel.create!(name: "Alternate")
 
 Transmission.create!(name: "Automatic")
 Transmission.create!(name: "Manual")
 Transmission.create!(name: "Semi-automatic")
 Transmission.create!(name: "CVT")
-Transmission.create!(name: "Other") 
+Transmission.create!(name: "Other")
 
 Drive.create!(name: "FWD")
 Drive.create!(name: "RWD")
@@ -682,7 +676,7 @@ Drive.create!(name: "AWD")
 Drive.create!(name: "4WD")
 Drive.create!(name: "4x4")
 Drive.create!(name: "4x2")
-Drive.create!(name: "Other") 
+Drive.create!(name: "Other")
 
 Engine.create!(name: "3 cylinder")
 Engine.create!(name: "4 cylinder")
@@ -717,13 +711,13 @@ Color.create!(name: "Yellow")
 
 AirCondition.create!(name: "Automatic")
 AirCondition.create!(name: "Manual")
-AirCondition.create!(name: "None") 
+AirCondition.create!(name: "None")
 
-Option.create!(name: "Price")
-Option.create!(name: "Year")
-Option.create!(name: "Mileage")
-Option.create!(name: "Capacity(cm3)")
-Option.create!(name: "Power(kW)")
+#Option.create!(name: "Price")
+#Option.create!(name: "Year")
+#Option.create!(name: "Mileage")
+#Option.create!(name: "Capacity(cm3)")
+#Option.create!(name: "Power(kW)")
 Option.create!(name: "3rd Row Seats")
 Option.create!(name: "Backup Camera")
 Option.create!(name: "Cruise Control")
@@ -745,13 +739,123 @@ Option.create!(name: "Sunroof")
 Option.create!(name: "Disability Equipped")
 Option.create!(name: "Lift Kit")
 Option.create!(name: "Trailer Hitch")
+Option.create!(name: "Back Break")
+Option.create!(name: "Hands Break") 
+Option.create!(name: "Lights") 
+
+# CategoryOption
+c = Category.find_by(name: "Cars")
+o = Option.find_by(name: "3rd Row Seats")
+c.options <<  o
+o = Option.find_by(name: "Backup Camera")
+c.options <<  o
+o = Option.find_by(name: "Cruise Control")
+c.options <<  o
+o = Option.find_by(name: "Keyless Entry")
+c.options <<  o
+o = Option.find_by(name: "Power Locks")
+c.options <<  o
+o = Option.find_by(name: "Power Windows")
+c.options <<  o
+o = Option.find_by(name: "Steering Wheel Controls")
+c.options <<  o
+o = Option.find_by(name: "Bluetooth(Hands-Free)")
+c.options <<  o
+o = Option.find_by(name: "CD Player")
+c.options <<  o
+o = Option.find_by(name: "DVD Player")
+c.options <<  o
+o = Option.find_by(name: "Navigation")
+c.options <<  o
+o = Option.find_by(name: "Portable Audio Connection")
+c.options <<  o
+o = Option.find_by(name: "Premium Audio")
+c.options <<  o
+o = Option.find_by(name: "Security System")
+c.options <<  o
+o = Option.find_by(name: "Heated Seats")
+c.options <<  o
+o = Option.find_by(name: "Leather Seats")
+c.options <<  o
+o = Option.find_by(name: "Sunroof")
+c.options <<  o
+o = Option.find_by(name: "Premium Wheels")
+c.options <<  o
+o = Option.find_by(name: "Disability Equipped")
+c.options <<  o
+o = Option.find_by(name: "Lift Kit")
+c.options <<  o
+o = Option.find_by(name: "Trailer Hitch")
+c.options <<  o
+c.save
+
+c = Category.find_by(name: "Trucks")
+o = Option.find_by(name: "Backup Camera")
+c.options <<  o
+o = Option.find_by(name: "Cruise Control")
+c.options <<  o
+o = Option.find_by(name: "Keyless Entry")
+c.options <<  o
+o = Option.find_by(name: "Power Locks")
+c.options <<  o
+o = Option.find_by(name: "Power Windows")
+c.options <<  o
+o = Option.find_by(name: "Steering Wheel Controls")
+c.options <<  o
+o = Option.find_by(name: "Bluetooth(Hands-Free)")
+c.options <<  o
+o = Option.find_by(name: "CD Player")
+c.options <<  o
+o = Option.find_by(name: "DVD Player")
+c.options <<  o
+o = Option.find_by(name: "Navigation")
+c.options <<  o
+o = Option.find_by(name: "Portable Audio Connection")
+c.options <<  o
+o = Option.find_by(name: "Premium Audio")
+c.options <<  o
+o = Option.find_by(name: "Security System")
+c.options <<  o
+o = Option.find_by(name: "Heated Seats")
+c.options <<  o
+o = Option.find_by(name: "Leather Seats")
+c.options <<  o
+o = Option.find_by(name: "Sunroof")
+c.options <<  o
+o = Option.find_by(name: "Premium Wheels")
+c.options <<  o
+o = Option.find_by(name: "Disability Equipped")
+c.options <<  o
+o = Option.find_by(name: "Lift Kit")
+c.options <<  o
+o = Option.find_by(name: "Trailer Hitch")
+c.options <<  o
+c.save
+
+c = Category.find_by(name: "Bicycles")
+o = Option.find_by(name: "Navigation")
+c.options <<  o
+o = Option.find_by(name: "Security System")
+c.options <<  o
+o = Option.find_by(name: "Heated Seats")
+c.options <<  o
+o = Option.find_by(name: "Leather Seats")
+c.options <<  o
+o = Option.find_by(name: "Premium Wheels")
+c.options <<  o
+o = Option.find_by(name: "Lights")
+c.options <<  o
+o = Option.find_by(name: "Back Break")
+c.options <<  o
+o = Option.find_by(name: "Hands Break")
+c.options <<  o
+c.save
 
 ad1 = Advertisement.create!(title: "2010 BMW 530 D GT", description: "", price: 25.999, year: DateTime.strptime("09/14/2009", "%m/%d/%Y"),
-							capacity: 2000, power: 2500, mileage: 192.333, created_at: Time.zone.now, updated_at: Time.zone.now,
-							fuel: Fuel.first, style: Style.first, air_condition: AirCondition.first, exterior_color: Color.first,
-							interior_color: Color.first, engine: Engine.first, drive: Drive.first, transmission: Transmission.first,
-							category: Category.first, vehicle_model: VehicleModel.first, user: User.first, advertisement_type: AdvertisementType.first)
-
+											capacity: 2000, power: 2500, mileage: 192.333, created_at: Time.zone.now, updated_at: Time.zone.now,
+											fuel: Fuel.first, style: Style.first, air_condition: AirCondition.first, exterior_color: Color.first,
+											interior_color: Color.first, engine: Engine.first, drive: Drive.first, transmission: Transmission.first,
+											category: Category.first, vehicle_model: VehicleModel.first, user: User.first, advertisement_type: AdvertisementType.first)
 
 # Options
 ad1.options << Option.find_by(name: "3rd Row Seats")
@@ -766,12 +870,13 @@ ad1.options << Option.find_by(name: "Security System")
 ad1.options << Option.find_by(name: "Trailer Hitch")
 ad1.save
 
-ad2 = Advertisement.create!(title: "2010 BMW X1 2.0 Navi/xDrive", description: "Some description", price: 14.000, year: DateTime.strptime("01/01/2000", "%m/%d/%Y"),
-							capacity: 1800, power: 2000, mileage: 200.000, created_at: Time.zone.now, updated_at: Time.zone.now,
-							fuel: Fuel.first, style: Style.first, air_condition: AirCondition.first, exterior_color: Color.first,
-							interior_color: Color.first, engine: Engine.first, drive: Drive.first, transmission: Transmission.first,
-							category: Category.first, vehicle_model: VehicleModel.first, user: User.first, advertisement_type: AdvertisementType.first)
 
+
+ad2 = Advertisement.create!(title: "2010 BMW X1 2.0 Navi/xDrive", description: "Some description", price: 14.000, year: DateTime.strptime("01/01/2000", "%m/%d/%Y"),
+											capacity: 1800, power: 2000, mileage: 200.000, created_at: Time.zone.now, updated_at: Time.zone.now,
+											fuel: Fuel.first, style: Style.first, air_condition: AirCondition.first, exterior_color: Color.first,
+											interior_color: Color.first, engine: Engine.first, drive: Drive.first, transmission: Transmission.first,
+											category: Category.first, vehicle_model: VehicleModel.first, user: User.first, advertisement_type: AdvertisementType.first)
 
 # Options
 ad2.options << Option.find_by(name: "3rd Row Seats")
@@ -792,3 +897,4 @@ ad2.options << Option.find_by(name: "Heated Seats")
 ad2.options << Option.find_by(name: "Portable Audio Connection")
 ad2.options << Option.find_by(name: "Steering Wheel Controls")
 ad2.save
+

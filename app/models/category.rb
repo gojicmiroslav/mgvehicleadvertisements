@@ -7,5 +7,7 @@ class Category < ApplicationRecord
 
  	has_many :advertisements
 
+ 	has_and_belongs_to_many :options
+
 	validates :name, presence: :true
 end

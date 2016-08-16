@@ -1,0 +1,14 @@
+cars:
+ name: Cars
+ description: Cars category description
+ vehicle_brands: opel, volkswagen, mercedes, renault
+
+trucks:
+ name: Trucks
+ description: Trucks category description
+ vehicle_brands: volkswagen, mercedes
+
+bicycles:
+ name: Bicycles
+ description: Bicycles category description
+ vehicle_brands: renault,boardman
