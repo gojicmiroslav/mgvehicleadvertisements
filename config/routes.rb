@@ -1,24 +1,32 @@
 Rails.application.routes.draw do
-    get 'categories/index'
+  get 'informations/index'
 
-    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-    root 'static_pages#home'
-    get  'help'   => 'static_pages#help'
-    get  'about'   => 'static_pages#about'
-    get  'contact' => 'static_pages#contact'
+  get 'categories/index'
 
-    devise_for :users, :controllers => { :registrations => :registrations }
-    resources :users, only: :show
-    resources :advertisements
-    resources :vehicle_models
-    resources :vehicle_brands
-    resources :options
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  root 'static_pages#home'
+  get  'help'   => 'static_pages#help'
+  get  'about'   => 'static_pages#about'
+  get  'contact' => 'static_pages#contact'
 
-    resources :categories, only: :index do
-        member do
-        get "options", to: "categories#options"
-        end
+  devise_for :users, :controllers => { :registrations => :registrations }
+  resources :users, only: :show
+  resources :advertisements
+  resources :vehicle_models
+  resources :vehicle_brands
+  resources :options
+
+  resources :categories, only: :index do
+    member do
+      get "basic", to: "categories#basic"
+      get "additional", to: "categories#additional"
+      get "options", to: "categories#options"
     end
+  end
 
+  resources :information, only: :index do
+    member do
+      get 'items', to: 'informations#items'  
+    end  
+  end
 end
-

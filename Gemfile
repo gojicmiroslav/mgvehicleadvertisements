@@ -32,6 +32,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+source "http://rails-assets.org" do
+  gem 'rails-assets-sweetalert'
+end
+
+gem 'sweet-alert-confirm'
+
 gem 'devise'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin', '>= 1.0.0.rc'

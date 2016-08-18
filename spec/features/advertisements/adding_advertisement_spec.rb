@@ -3,10 +3,11 @@ require "rails_helper"
 RSpec.feature "Users Adding Advertisement", :feature do
 	
 	describe "Advertisement Form", js: true do
+		fixtures :information_types
 		fixtures :categories	
- 		fixtures :vehicle_brands
- 		fixtures :vehicle_models
- 		fixtures :options
+		fixtures :vehicle_brands
+		fixtures :vehicle_models
+		fixtures :options
 
 		before(:all) do
   			#Capybara.current_driver = :selenium
@@ -60,14 +61,31 @@ RSpec.feature "Users Adding Advertisement", :feature do
 
 		 	fill_in('advertisement_price', :with => '3000.00')
 		 	fill_in('advertisement_year', :with => '2003-01-01')
-		 	fill_in('advertisement_capacity', :with => '2000')
-		 	fill_in('advertisement_power', :with => '2500')
-		 	fill_in('advertisement_mileage', :with => '195000')		
 
 		 	select(vehicle_models(:astra_g).name, from: 'vm_select')
 
 		 	#click_on("Add advertisement")
 		 	#expect(page).to have_content("Advertisement successfully created.")
+		end
+
+		scenario "test options" do
+			visit new_advertisement_path
+			select(categories(:cars).name, :from => 'categories')
+			#save_screenshot('screenshot.png')
+
+			# test cars options
+			expect(page).to have_no_checked_field(options(:navigation).name)
+			expect(page).to have_no_checked_field(options(:cd_player).name)
+			expect(page).to have_no_checked_field(options(:dvd_player).name)
+			expect(page).to have_no_checked_field(options(:sunroof).name)
+			expect(page).to have_no_checked_field(options(:power_locks).name)
+
+			select(categories(:trucks).name, :from => 'categories')		
+			expect(page).to have_no_checked_field(options(:navigation).name)
+			expect(page).to have_no_checked_field(options(:cd_player).name)
+			expect(page).to have_no_checked_field(options(:dvd_player).name)
+			expect(page).to have_no_checked_field(options(:power_locks).name)
+			expect(page).to have_no_checked_field(options(:heated_seats).name)
 		end
 	end
 
