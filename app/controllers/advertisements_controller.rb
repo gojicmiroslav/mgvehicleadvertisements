@@ -15,7 +15,6 @@ class AdvertisementsController < ApplicationController
 	end
 
 	def create
-		debugger
  		@advertisement = Advertisement.new(advertisement_params)
      	@advertisement.user = current_user
  

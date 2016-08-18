@@ -1,20 +1,24 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  	get 'users/show'
+    get 'categories/index'
 
-  	devise_for :users, :controllers => { :registrations => :registrations }
-	root 'static_pages#home'
+    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+    root 'static_pages#home'
+    get  'help'   => 'static_pages#help'
+    get  'about'   => 'static_pages#about'
+    get  'contact' => 'static_pages#contact'
 
-	get 'help'   => 'static_pages#help'
-	get 'about'   => 'static_pages#about'
- 	get 'contact' => 'static_pages#contact'
-
- 	resources :users, only: :show
- 	resources :categories
- 	resources :advertisements
+    devise_for :users, :controllers => { :registrations => :registrations }
+    resources :users, only: :show
+    resources :advertisements
     resources :vehicle_models
     resources :vehicle_brands
     resources :options
 
-  	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    resources :categories, only: :index do
+        member do
+        get "options", to: "categories#options"
+        end
+    end
+
 end
+
