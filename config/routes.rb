@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :vehicle_brands
   resources :options
 
-  resources :categories, only: :index do
+  resources :categories, only: [:index, :show] do
     member do
       get "basic", to: "categories#basic"
       get "additional", to: "categories#additional"
