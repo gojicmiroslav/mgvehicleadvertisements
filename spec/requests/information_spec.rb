@@ -59,8 +59,8 @@ RSpec.describe 'Information', type: :request do
         information = Information.find_by(name: "Fuel")
         items = information.items
         expect(JSON.parse(response.body).size).to eq(items.count)
-        # 5 - count from fixtures
-        expect(JSON.parse(response.body).size).to eq(5)
+        # 4 - count from fixtures
+        expect(JSON.parse(response.body).size).to eq(4)
 
 	end
 

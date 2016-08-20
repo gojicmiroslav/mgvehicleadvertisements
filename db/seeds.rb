@@ -80,7 +80,6 @@ Category.create!(name: "Trucks",
 
 
 
-
 # CARS
 vb = VehicleBrand.new(name: "AC")
 vb.categories << Category.find_by(name: "Cars")
@@ -652,7 +651,7 @@ vm.save
 
 vm = VehicleModel.new(name: "Coyote Fatman Neon Pink/matt Black")
 vm.category = Category.find_by(name: "Bicycles")
-vm.vehicle_brand  VehicleBrand.find_by(name: "Coyote")
+vm.vehicle_brand = VehicleBrand.find_by(name: "Coyote")
 vm.save
 
 # ADVERTISEMENT TYPE
@@ -816,11 +815,6 @@ item.categories << Category.find_by(name: "Cars")
 item.save
 
 item = Item.new(name: "Sedan")
-item.information << Information.find_by(name: "Style")
-item.categories << Category.find_by(name: "Cars")
-item.save
-
-item = Item.new(name: "SUV/Crossover")
 item.information << Information.find_by(name: "Style")
 item.categories << Category.find_by(name: "Cars")
 item.save
@@ -1007,14 +1001,6 @@ item.information << Information.find_by(name: "Engine")
 item.categories << Category.find_by(name: "Cars")
 item.categories << Category.find_by(name: "Trucks")
 item.save
-
-
-item = Item.new(name: "Rotary Engine")
-item.information << Information.find_by(name: "Engine")
-item.categories << Category.find_by(name: "Cars")
-item.categories << Category.find_by(name: "Trucks")
-item.save
-
 
 ############Exterior/Interior Color#######################################
 item = Item.new(name: "Beige")
@@ -1311,11 +1297,6 @@ item.categories << Category.find_by(name: "Bicycles")
 item.save
 
 item = Item.new(name: "Aluminium")
-item.information << Information.find_by(name: "Material")
-item.categories << Category.find_by(name: "Bicycles")
-item.save
-
-item = Item.new(name: "Iron")
 item.information << Information.find_by(name: "Material")
 item.categories << Category.find_by(name: "Bicycles")
 item.save

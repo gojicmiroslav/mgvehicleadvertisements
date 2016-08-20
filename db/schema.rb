@@ -30,13 +30,13 @@ ActiveRecord::Schema.define(version: 20160818152412) do
   end
 
   create_table "advertisements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title",                                                       default: "",   null: false
+    t.string   "title",                                                        default: "",   null: false
     t.text     "description",           limit: 65535
-    t.decimal  "price",                               precision: 7, scale: 3,                null: false
-    t.date     "year",                                                                       null: false
-    t.boolean  "active",                                                      default: true
-    t.datetime "created_at",                                                                 null: false
-    t.datetime "updated_at",                                                                 null: false
+    t.decimal  "price",                               precision: 10, scale: 2,                null: false
+    t.date     "year",                                                                        null: false
+    t.boolean  "active",                                                       default: true
+    t.datetime "created_at",                                                                  null: false
+    t.datetime "updated_at",                                                                  null: false
     t.integer  "category_id"
     t.integer  "vehicle_model_id"
     t.integer  "user_id"
