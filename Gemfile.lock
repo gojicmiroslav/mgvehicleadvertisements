@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: 8ceadb7fca5068564cfa8a33b1a76af86c6cbff3
+  specs:
+    carrierwave (0.11.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+
+GIT
   remote: git://github.com/mshibuya/remotipart.git
   revision: 88d9a7d55bde66acb6cf3a3c6036a5a1fc991d5e
   specs:
@@ -129,6 +138,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_magick (4.5.1)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
@@ -281,6 +291,7 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   capybara
+  carrierwave!
   coffee-rails (~> 4.2)
   database_cleaner
   devise
@@ -292,6 +303,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   listen (~> 3.0.5)
+  mini_magick
   mysql2 (>= 0.3.18, < 0.5)
   pg
   phantomjs

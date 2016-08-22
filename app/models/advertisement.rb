@@ -1,5 +1,4 @@
 class Advertisement < ActiveRecord::Base
-
 	belongs_to :advertisement_type
 	belongs_to :user, validate: true
 	belongs_to :category, validate: true
@@ -13,6 +12,9 @@ class Advertisement < ActiveRecord::Base
 	accepts_nested_attributes_for :advertisement_informations
 	accepts_nested_attributes_for :options
 	
+	serialize :images, Array
+	# picture - name of the attribute
+	mount_uploaders :images, ImageUploader
 
 	validates :title, presence: true
 	validates :price, presence: true
@@ -23,32 +25,16 @@ class Advertisement < ActiveRecord::Base
 
 	# TODO - ovo refaktorisati
 	def save_all advertisement_informations
-		begin
-			if self.save
-				advertisement_informations.each do |info_id, value|
-					begin
-      			a = AdvertisementInformation.create(
-        			advertisement: self,
-        			information: Information.find(info_id),
-        			value: value
-      			)
+	  	advertisement_informations.each do |info_id, value|
+	  		a = AdvertisementInformation.create(
+	        			advertisement: self,
+	        			information: Information.find(info_id),
+	        			value: value
+	      			)
+	  		self.advertisement_informations << a
+	  	end
 
-	      		rescue
-	      			self.advertisement_informations.destroy_all
-	      			self.destroy
-	      			return false
-	      		end	
-    		end
-
-    		return true
-    	else
-    		false 
-    	end	
-
-	    rescue Exception => e
-	    	puts e.message
-			return false
-	    end	
+  		self.save
 	end
 
 	def update_all(advertisement_params, informations)
@@ -69,8 +55,8 @@ class Advertisement < ActiveRecord::Base
 
 		informations.each do |info|
 			if info.information_type_id == id
-  			arr << info
-  		end
+  				arr << info
+  			end
 		end
 
 		return arr
@@ -88,6 +74,5 @@ class Advertisement < ActiveRecord::Base
 		end
 
 		return ret_val
-	end
-
+	end 
 end

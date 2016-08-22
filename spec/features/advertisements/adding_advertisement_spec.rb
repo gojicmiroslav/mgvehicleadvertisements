@@ -15,7 +15,7 @@ RSpec.feature "Adding Advertisement", :feature do
 
 		before(:all) do
 			Capybara.register_driver :poltergeist do |app|
-    			Capybara::Poltergeist::Driver.new(app, :phantomjs => Phantomjs.path)
+    		Capybara::Poltergeist::Driver.new(app, :phantomjs => Phantomjs.path)
 			end
 			Capybara.javascript_driver = :poltergeist
 		end
@@ -61,7 +61,7 @@ RSpec.feature "Adding Advertisement", :feature do
 				signin_login_page(users(:miroslav).email, 'password')
 				visit new_advertisement_path
 				select(categories(:cars).name, :from => 'categories')
-				expect(page).to have_select('vehicle_brands')
+				expect(page).to have_select('vehicle_brands')				
 				select(vehicle_brands(:opel).name, from: 'vehicle_brands', match: :first)
 				expect(page).to have_select('vm_select',selected: "Select...")
 				select(vehicle_models(:astra_g).name, from: 'vm_select')	
@@ -85,10 +85,10 @@ RSpec.feature "Adding Advertisement", :feature do
 			categories(:cars).information.additional_information.each do |info|
 				name = info.name.downcase.gsub(' ', '_')
 				if !info.items.empty?
-					expect(page).to have_select("advertisement[#{name}]", 
+					expect(page).to have_select("advertisement[advertisement_informations][#{info.id}]", 
 																			selected: "Select..." )		
 				else
-					expect(page).to have_field("advertisement[#{info.name.downcase}]")
+					expect(page).to have_field("advertisement[advertisement_informations][#{info.id}]")
 				end
 			end
 
@@ -114,10 +114,10 @@ RSpec.feature "Adding Advertisement", :feature do
 			categories(:bicycles).information.additional_information.each do |info|
 				name = info.name.downcase.gsub(' ', '_')
 				if !info.items.empty?
-					expect(page).to have_select("advertisement[#{name}]", 
+					expect(page).to have_select("advertisement[advertisement_informations][#{info.id}]", 
 																			selected: "Select..." )		
 				else
-					expect(page).to have_field("advertisement[#{name}]")
+					expect(page).to have_field("advertisement[advertisement_informations][#{info.id}]")
 				end
 			end
 
@@ -142,7 +142,7 @@ RSpec.feature "Adding Advertisement", :feature do
 				visit new_advertisement_path
 				select(categories(:cars).name, :from => 'categories')
 				select(vehicle_brands(:opel).name, from: 'vehicle_brands', match: :first)
-				select(vehicle_models(:astra_g).name, from: 'vm_select', match: :first)	
+				select(vehicle_models(:astra_g).name, from: 'vm_select')	
 
 				fill_in("advertisement[title]", with: "New Advertisement")
 				fill_in("advertisement[price]", with: 50000)
@@ -154,14 +154,21 @@ RSpec.feature "Adding Advertisement", :feature do
 				end
 
 				# additional advertisement informations	
-				select(items(:gasoline).name, from: "advertisement[fuel]")
-				select(items(:coupe).name, from: "advertisement[style]") 
-				select(items(:fwd).name, from: "advertisement[drive]")
-				select(items(:semi_automatic).name, from: "advertisement[transmission]")
-				select(items(:manual_air_condition).name, from: "advertisement[air_condition]")
-				select(items(:cylinder_10).name, from: "advertisement[engine]")
-				select(items(:blue_exterior_color).name, from: "advertisement[exterior_color]")
-				select(items(:gold_exterior_color).name, from: "advertisement[interior_color]")
+				select(items(:gasoline).name, from: "advertisement[advertisement_informations][#{information(:fuel).id}]")
+				select(items(:coupe).name, from: "advertisement[advertisement_informations][#{information(:style).id}]") 
+				select(items(:fwd).name, from: "advertisement[advertisement_informations][#{information(:drive).id}]")
+				select(items(:semi_automatic).name, from: "advertisement[advertisement_informations][#{information(:transmission).id}]")
+				select(items(:manual_air_condition).name, from: "advertisement[advertisement_informations][#{information(:air_condition).id}]")
+				select(items(:cylinder_10).name, from: "advertisement[advertisement_informations][#{information(:engine).id}]")
+				select(items(:blue_exterior_color).name, from: "advertisement[advertisement_informations][#{information(:exterior_color).id}]")
+				select(items(:gold_exterior_color).name, from: "advertisement[advertisement_informations][#{information(:interior_color).id}]")
+
+				# attach images
+				attach_file('advertisement_images', "#{Rails.root}/spec/fixtures/images/image_1.jpg")
+				attach_file('advertisement_images', "#{Rails.root}/spec/fixtures/images/image_2.jpg")
+				attach_file('advertisement_images', "#{Rails.root}/spec/fixtures/images/image_3.jpg")
+				attach_file('advertisement_images', "#{Rails.root}/spec/fixtures/images/image_4.png")
+				attach_file('advertisement_images', "#{Rails.root}/spec/fixtures/images/image_5.jpg")
 
 				categories(:cars).options.each do |info|
 					name = info.name.downcase.gsub(' ', '_')
@@ -181,7 +188,7 @@ RSpec.feature "Adding Advertisement", :feature do
 				visit new_advertisement_path
 				select(categories(:bicycles).name, :from => 'categories')
 				select(vehicle_brands(:boardman).name, from: 'vehicle_brands', match: :first)
-				select(vehicle_models(:mountain_one).name, from: 'vm_select', match: :first)	
+				select(vehicle_models(:mountain_one).name, from: 'vm_select')	
 
 				fill_in("advertisement[title]", with: "New Bicycle Advertisement")
 				fill_in("advertisement[price]", with: 1000)
@@ -197,10 +204,10 @@ RSpec.feature "Adding Advertisement", :feature do
 				end
 
 				# additional advertisement informations	
-				select(items(:blue_color).name, from: "advertisement[color]")
-				select(items(:v_break).name, from: "advertisement[breaks]") 
-				select(items(:carbon).name, from: "advertisement[material]")
-				select(items(:inch_17).name, from: "advertisement[size]")
+				select(items(:blue_color).name, from: "advertisement[advertisement_informations][#{information(:color).id}]")
+				select(items(:v_break).name, from: "advertisement[advertisement_informations][#{information(:breaks).id}]") 
+				select(items(:carbon).name, from: "advertisement[advertisement_informations][#{information(:material).id}]")
+				select(items(:inch_17).name, from: "advertisement[advertisement_informations][#{information(:size).id}]")
 
 				categories(:bicycles).options.each do |info|
 					name = info.name.downcase.gsub(' ', '_')

@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Advertisement, type: :model do
-
 	context "validation" do
   		it{ should validate_presence_of :title }
 		it{ should validate_presence_of :price }
@@ -22,11 +21,11 @@ RSpec.describe Advertisement, type: :model do
 
   	context "testing save all method" do
   		before do
-  			@category = FactoryGirl.create(:category)
-			@vehicle_model = FactoryGirl.create(:vehicle_model)
-			@user = FactoryGirl.create(:user)
-			@information = FactoryGirl.create(:information)
-			@capacity = FactoryGirl.create(:capacity)
+  			category = FactoryGirl.create(:category)
+			vehicle_model = FactoryGirl.create(:vehicle_model)
+			user = FactoryGirl.create(:user)
+			information = FactoryGirl.create(:information)
+			capacity = FactoryGirl.create(:capacity)
   		end
 
   		let(:adv1) do
@@ -45,19 +44,5 @@ RSpec.describe Advertisement, type: :model do
 
   		let(:adv2){ Advertisement.new }
 
-		it "should save all return true" do
-			advertisement_informations = { @information.id => @information.name, @capacity.id => @capacity.name }
-			expect(adv1.save_all(advertisement_informations)).to be true
-		end
-
-		it "should save all return false and destroy self" do
-			advertisement_informations = { 0 => "", 0 => "" }
-			expect(adv1.save_all(advertisement_informations)).to be false
-		end
-
-		it "should return false with invalid advertisement" do
-			advertisement_informations = { @information.id => @information.name, @capacity.id => @capacity.name }
-			expect(adv2.save_all(advertisement_informations)).to be false
-		end
 	end
 end
