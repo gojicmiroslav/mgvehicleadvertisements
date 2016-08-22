@@ -75,4 +75,5 @@ class Advertisement < ActiveRecord::Base
 
 		return ret_val
 	end 
+
 end

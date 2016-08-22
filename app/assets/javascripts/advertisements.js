@@ -7,9 +7,22 @@ jQuery( "#advertisement_year" ).datepicker({
 });
 
 // custom validate method for image count
-jQuery.validator.addMethod('checkImageLimit', function(limit, imageCount){
+jQuery.validator.addMethod('checkImageLimit', function(){
 	return $("#advertisement_images").get(0).files.length < 8;
 }, jQuery.validator.format("Images count exceeds limit"));
+
+
+jQuery.validator.addMethod('checkImageSize', function(){
+	var el = $("#advertisement_images").get(0).files;
+	for(i = 0; i < el.length; i++) { 
+		var size_in_megabytes = el[i].size/1024/1024;
+		if(size_in_megabytes > 5) {
+			return false;
+		} 
+	}
+
+	return true;
+}, jQuery.validator.format("Maximum file size iz 5MB. Please choose a smaller file"));
 
 var validator = $('#advertisement_form').validate({ // initialize the plugin
     rules: {
@@ -20,7 +33,10 @@ var validator = $('#advertisement_form').validate({ // initialize the plugin
       	},
       	'advertisement[price]': "required",
       	'advertisement[year]': "required",
-      	'advertisement[images][]': { checkImageLimit: true }
+      	'advertisement[images][]': { 
+      		checkImageLimit: true,
+      		checkImageSize: true,
+      	}
     },
 
     messages: {
