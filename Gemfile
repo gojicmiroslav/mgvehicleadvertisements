@@ -45,6 +45,7 @@ gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'dropzonejs-rails'
+gem 'blueimp-gallery'
 
 group :development, :test do
     # Call 'byebug' anywhere in the code to stop execution and get a debugger console
