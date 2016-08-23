@@ -18,26 +18,26 @@ AdvertisementType.destroy_all
 User.destroy_all
 
 # Users
-User.create!(	firstname: "Miroslav",
-							lastname: "Gojic",
-							email: "miroslavy2k@gmail.com",
-							password: "deronje777",
-							password_confirmation: "deronje777",
-							confirmed_at: Time.zone.now )
+User.create!(firstname: "Miroslav",
+			lastname: "Gojic",
+			email: "miroslavy2k@gmail.com",
+			password: "password123",
+			password_confirmation: "password123",
+			confirmed_at: Time.zone.now )
 
-User.create!(	firstname: "Pera",
-							lastname: "Peric",
-							email: "pera@gmail.com",
-							password: "deronje777",
-							password_confirmation: "deronje777",
-							confirmed_at: Time.zone.now )
+User.create!(firstname: "Pera",
+			lastname: "Peric",
+			email: "pera@gmail.com",
+			password: "password123",
+			password_confirmation: "password123",
+			confirmed_at: Time.zone.now )
 
-User.create!(	firstname: "Maja",
-							lastname: "Mudrinic",
-							email: "maja@gmail.com",
-							password: "deronje777",
-							password_confirmation: "deronje777",
-							confirmed_at: Time.zone.now )
+User.create!(firstname: "Maja",
+			lastname: "Mudrinic",
+			email: "maja@gmail.com",
+			password: "password123",
+			password_confirmation: "password123",
+			confirmed_at: Time.zone.now )
 
 Category.create!(name: "Cars", 
 								 description: "Contrary to popular belief, Lorem Ipsum is not simply random text. 
