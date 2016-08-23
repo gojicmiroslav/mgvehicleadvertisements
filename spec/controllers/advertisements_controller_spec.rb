@@ -23,9 +23,14 @@ RSpec.describe AdvertisementsController, type: :controller do
 		end
 
 		describe "GET show" do
-			it "redirects to login page" do
+			it "renders :show template" do
 				get :show, id: advertisement
-				expect(response).to redirect_to(new_user_session_path)
+				expect(response).to render_template(:show)
+			end
+
+			it "assigns requested advertisement to template" do
+				get :show, id: advertisement
+				expect(assigns(:advertisement)).to eq(advertisement)
 			end
 		end
 

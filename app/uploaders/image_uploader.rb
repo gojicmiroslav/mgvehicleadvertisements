@@ -35,15 +35,15 @@ class ImageUploader < CarrierWave::Uploader::Base
     # end
 
     version :thumb_small do
-        process :resize_to_fit => [100, 75]
+        process :resize_to_fill => [100, 75]
     end
  
     version :thumb_middle do
-        process :resize_to_fit => [144, 108]
+        process :resize_to_fill => [210, 210]
     end
  
     version :thumb_big do
-        process :resize_to_fit => [477, 357]
+        process :resize_to_fill => [477, 357]
     end
 
     def extension_white_list
