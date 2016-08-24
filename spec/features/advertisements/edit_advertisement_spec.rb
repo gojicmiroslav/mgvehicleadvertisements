@@ -154,7 +154,7 @@ RSpec.feature "Edit Advertisement", :feature do
 				expect(page).to have_select("advertisement[advertisement_informations][#{material.id}]", 
 																		selected: material_advertisement_information.value)
 				expect(page).to have_select("advertisement[advertisement_informations][#{size.id}]", 
-																		selected: size_advertisement_information.value)
+												selected: size_advertisement_information.value)
 
 				# options
 				bicycle_advertisement.category.options.each_with_index do |option, index|

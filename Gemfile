@@ -75,6 +75,8 @@ group :test do
     gem "selenium-webdriver"
     gem 'poltergeist'
     gem 'phantomjs', :require => 'phantomjs/poltergeist'
+    gem 'spring'
+    gem 'spring-commands-rspec'
 end
 
 group :production do

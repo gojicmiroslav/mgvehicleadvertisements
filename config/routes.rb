@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   get 'informations/index'
 
-  get 'categories/index'
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root 'static_pages#home'
+  root 'categories#index'
+  get  'home'   => 'static_pages#home'
   get  'help'   => 'static_pages#help'
   get  'about'   => 'static_pages#about'
   get  'contact' => 'static_pages#contact'
@@ -13,7 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: :show
   resources :advertisements
   resources :vehicle_models
-  resources :vehicle_brands
+  resources :vehicle_brands, only: [:index, :show]
   resources :options
 
   resources :categories, only: [:index, :show] do

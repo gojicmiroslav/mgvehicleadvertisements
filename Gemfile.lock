@@ -390,6 +390,8 @@ GEM
     show_me_the_cookies (3.1.0)
       capybara (~> 2.0)
     spring (1.7.2)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     spring-watcher-listen (2.0.0)
       listen (>= 2.7, < 4.0)
       spring (~> 1.2)
@@ -467,6 +469,7 @@ DEPENDENCIES
   shoulda-matchers
   show_me_the_cookies
   spring
+  spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
   sweet-alert-confirm
   turbolinks (~> 5)

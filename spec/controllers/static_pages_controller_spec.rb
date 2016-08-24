@@ -1,8 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe StaticPagesController, type: :controller do
+	fixtures :advertisement_types
+  	fixtures :users
+  	fixtures :information_types
+  	fixtures :information
+  	fixtures :items
+  	fixtures :categories
+  	fixtures :vehicle_brands
+  	fixtures :vehicle_models
+  	fixtures :options
+  	fixtures :advertisements
 	
-	describe "GET #index" do
+	describe "GET #home" do
 
 		it "should responds successfully with an HTTP 200 status code" do
 			get :home
