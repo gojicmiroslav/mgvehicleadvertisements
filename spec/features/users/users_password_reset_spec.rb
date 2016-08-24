@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 RSpec.feature "Users Password Reset", :device do
+    fixtures :advertisement_types
+    fixtures :information_types
+    fixtures :information
+    fixtures :items
+    fixtures :categories    
+    fixtures :vehicle_brands
+    fixtures :vehicle_models
+    fixtures :options
+    fixtures :advertisements
 
 	let(:user){ FactoryGirl.create(:user) }
 	let(:new_password) { 'Passw0rd!' }

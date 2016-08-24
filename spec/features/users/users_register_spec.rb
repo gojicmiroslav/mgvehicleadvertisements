@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 RSpec.feature "User Register", :feature do
+	fixtures :advertisement_types
+	fixtures :information_types
+	fixtures :information
+	fixtures :items
+	fixtures :categories	
+	fixtures :vehicle_brands
+	fixtures :vehicle_models
+	fixtures :options
+	fixtures :advertisements
 
 	let(:invalid_user) do
 		User.create(firstname: "",

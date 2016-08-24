@@ -1,7 +1,5 @@
 class CategoriesController < ApplicationController
   
-  
-
   def index
     @category = Category.find_by(name: "Cars")
     @categories = Category.all
@@ -14,6 +12,7 @@ class CategoriesController < ApplicationController
     @categories = Category.all
     @category_advertisements = @category.advertisements
     @vehicle_brands = @category.vehicle_brands
+    @advertisements = @category.advertisements
   end
 
   def basic
