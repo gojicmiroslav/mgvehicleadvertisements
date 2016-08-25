@@ -87,7 +87,7 @@ class AdvertisementsController < ApplicationController
   private 
 
   def set_advertisement
-    @advertisement = Advertisement.find(params[:id])
+    @advertisement = Advertisement.friendly.find(params[:id])
   end
 
   def advertisement_params

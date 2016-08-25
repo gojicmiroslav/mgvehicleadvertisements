@@ -1,4 +1,7 @@
 class Advertisement < ActiveRecord::Base
+	extend FriendlyId
+	friendly_id :title, use: [:slugged, :finders]
+
 	belongs_to :advertisement_type
 	belongs_to :user, validate: true
 	belongs_to :category, validate: true
@@ -75,5 +78,13 @@ class Advertisement < ActiveRecord::Base
 
 		return ret_val
 	end 
+
+	def slug_candidates
+		[
+       		:title,
+       		[:title, :year],
+       		[:title, :year, :price]
+		]
+    end
 
 end
