@@ -1,7 +1,7 @@
 class Information < ActiveRecord::Base
 	belongs_to :information_type
 	has_and_belongs_to_many :categories
-	has_many :information_options
+	#has_many :information_options
 	has_many :advertisement_informations
 	has_many :advertisements, through: :advertisement_informations
 	has_and_belongs_to_many :items

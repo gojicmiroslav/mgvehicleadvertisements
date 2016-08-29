@@ -8,10 +8,10 @@ class Category < ActiveRecord::Base
   	has_many :vehicle_models
 	has_many :advertisements
 
-	accepts_nested_attributes_for :vehicle_brands
-	accepts_nested_attributes_for :options
-	accepts_nested_attributes_for :items
-	accepts_nested_attributes_for :information
+	# accepts_nested_attributes_for :vehicle_brands
+    # accepts_nested_attributes_for :options
+	# accepts_nested_attributes_for :items
+	# accepts_nested_attributes_for :information
 
 	validates :name, presence: true
 
