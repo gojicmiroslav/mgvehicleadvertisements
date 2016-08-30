@@ -47,6 +47,7 @@ class AdvertisementsController < ApplicationController
 
 
     if @advertisement.save_all(advertisement_informations)
+      UserMailer.advertisement_created(current_user.email, @advertisement.id).deliver_now
       flash[:success] = "Advertisement successfully created."
       redirect_to @advertisement
     else

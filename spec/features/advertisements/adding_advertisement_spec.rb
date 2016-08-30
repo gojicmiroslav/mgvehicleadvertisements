@@ -179,7 +179,11 @@ RSpec.feature "Adding Advertisement", :feature do
 					click_button "Add advertisement"
 				end.to change {Advertisement.count}.from(Advertisement.count).to(Advertisement.count + 1)
 
+				expect(Advertisement.pending).to include(Advertisement.last)
 				expect(page).to have_content "Advertisement successfully created."
+				# expect that email has been sent
+ 				# expect(ActionMailer::Base.deliveries.count).to eq(1)
+ 				expect(ActionMailer::Base.deliveries.last.to).to include(users(:miroslav).email)
 			end
 
 			scenario "user successfully adds bicycle advertisement" do

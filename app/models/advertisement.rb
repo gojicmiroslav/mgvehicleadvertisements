@@ -22,22 +22,38 @@ class Advertisement < ActiveRecord::Base
 	validates :title, presence: true
 	validates :price, presence: true
 	validates :year, presence: true
-	validates :active, presence: true
 	validates :vehicle_model, presence: true
 	validates :user, presence: true
+
+	enum status: [:active, :inactive, :pending, :rejected]
+
+	after_commit :send_email, if: :status_changed?
+
+	# after_commit do
+	# 	if self.previous_changes.has_key?("status")
+	# 		@advertisement = self
+	# 		UserMailer.advertisement_updated(user.email, self).deliver_now
+	# 	end
+	# end
 
 	# TODO - ovo refaktorisati
 	def save_all advertisement_informations
 	  	advertisement_informations.each do |info_id, value|
 	  		a = AdvertisementInformation.create(
-	        			advertisement: self,
-	        			information: Information.find(info_id),
-	        			value: value
-	      			)
+        			advertisement: self,
+        			information: Information.find(info_id),
+        			value: value
+      			)
 	  		self.advertisement_informations << a
 	  	end
 
-  		self.save
+		saved = self.save
+	  	if saved
+			# set to default
+			self.pending!
+		end
+
+		return saved
 	end
 
 	def update_all(advertisement_params, informations)
@@ -85,6 +101,17 @@ class Advertisement < ActiveRecord::Base
        		[:title, :year],
        		[:title, :year, :price]
 		]
+    end
+
+    private
+
+    def status_changed?
+    	previous_changes.has_key?("status")
+    end
+
+    def send_email
+    	@advertisement = self
+		UserMailer.advertisement_updated(user.email, self).deliver_now
     end
 
 end

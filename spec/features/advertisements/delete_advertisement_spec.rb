@@ -20,7 +20,7 @@ RSpec.feature "Delete Advertisement", :feature do
 
 			expect do
 				first(:link, "Delete").click
-			end.to change {Advertisement.count}.from(Advertisement.count).to(Advertisement.count - 1)		
+			end.to change {Advertisement.count}.by(-1)
 		end
 	end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824180019) do
+ActiveRecord::Schema.define(version: 20160829212352) do
 
   create_table "advertisement_informations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "value"
@@ -30,19 +30,19 @@ ActiveRecord::Schema.define(version: 20160824180019) do
   end
 
   create_table "advertisements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title",                                                        default: "",   null: false
+    t.string   "title",                                                        default: "", null: false
     t.text     "description",           limit: 65535
-    t.decimal  "price",                               precision: 10, scale: 2,                null: false
-    t.date     "year",                                                                        null: false
-    t.boolean  "active",                                                       default: true
-    t.datetime "created_at",                                                                  null: false
-    t.datetime "updated_at",                                                                  null: false
+    t.decimal  "price",                               precision: 10, scale: 2,              null: false
+    t.date     "year",                                                                      null: false
+    t.datetime "created_at",                                                                null: false
+    t.datetime "updated_at",                                                                null: false
     t.integer  "category_id"
     t.integer  "vehicle_model_id"
     t.integer  "user_id"
     t.integer  "advertisement_type_id"
     t.text     "images",                limit: 65535
     t.string   "slug"
+    t.integer  "status"
     t.index ["advertisement_type_id"], name: "index_advertisements_on_advertisement_type_id", using: :btree
     t.index ["category_id"], name: "index_advertisements_on_category_id", using: :btree
     t.index ["slug"], name: "index_advertisements_on_slug", unique: true, using: :btree
