@@ -69,12 +69,25 @@
 	  		<%#= f.collection_select :exterior_color_id, Color.all, :id, :name, prompt: "" %>
 				
 				<div id="additional_informations"></div> 
-	  	<% end %>	
+	  		<% end %>	
 				
 			<hr />
 
+			<div class="form-group">
+			  	<div class="row">
+			  		<div class="col-sm-8">
+			    		<label>Featured Image</label>
+					    <%= image_tag(@advertisement.featured_image_url) if @advertisement.featured_image? %>
+    					<%= f.file_field :featured_image %>
+    					<%= f.hidden_field :featured_image_cache %>
+			    	</div>
+			    </div>
+			</div>
+
+			<hr />
+
 			<%= fields_for :options do |option| %>	
-		  	<h4 class="text-info">Options</h4>	
+		  		<h4 class="text-info">Options</h4>	
 				<div id="options"></div>
 			<% end %>
 

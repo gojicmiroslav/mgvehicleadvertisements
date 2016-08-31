@@ -2,17 +2,17 @@ require "rails_helper"
 
 RSpec.feature "Adding Advertisement", :feature do
 	
-	describe "Adding Advertisement feature", js: true do
-		fixtures :advertisement_types
-		fixtures :users
-		fixtures :information_types
-		fixtures :information
-		fixtures :items
-		fixtures :categories	
-		fixtures :vehicle_brands
-		fixtures :vehicle_models
-		fixtures :options
-
+	fixtures :advertisement_types
+	fixtures :users
+	fixtures :information_types
+	fixtures :information
+	fixtures :items
+	fixtures :categories	
+	fixtures :vehicle_brands
+	fixtures :vehicle_models
+	fixtures :options
+	
+	describe "Adding Advertisement feature", js: true do		
 		before(:all) do
 			Capybara.register_driver :poltergeist do |app|
     		Capybara::Poltergeist::Driver.new(app, :phantomjs => Phantomjs.path)
@@ -147,6 +147,8 @@ RSpec.feature "Adding Advertisement", :feature do
 				fill_in("advertisement[title]", with: "New Advertisement")
 				fill_in("advertisement[price]", with: 50000)
 				fill_in("advertisement[year]", with: '2016-03-14')
+
+				attach_file('advertisement[featured_image]', "#{Rails.root}/spec/fixtures/images/image_1.jpg")
 
 				# basic advertisement informations
 				categories(:cars).information.basic_information.each do |info|

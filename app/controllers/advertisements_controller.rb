@@ -45,7 +45,6 @@ class AdvertisementsController < ApplicationController
     #advertisement_informations = params[:advertisement][:advertisement_informations]
     advertisement_informations = get_advertisement_informations params[:advertisement][:advertisement_informations]
 
-
     if @advertisement.save_all(advertisement_informations)
       UserMailer.advertisement_created(current_user.email, @advertisement.id).deliver_now
       flash[:success] = "Advertisement successfully created."
@@ -92,7 +91,7 @@ class AdvertisementsController < ApplicationController
   end
 
   def advertisement_params
-    params.require(:advertisement).permit(:title, :description, :price, :year, :active, :category_id, 
+    params.require(:advertisement).permit(:title, :description, :price, :year, :active, :category_id, :featured_image, 
                                           :vehicle_model_id, :user_id, :advertisement_type_id,
                                           :option_ids, :advertisement_informations, images: [])
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829212352) do
+ActiveRecord::Schema.define(version: 20160830184210) do
 
   create_table "advertisement_informations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "value"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20160829212352) do
     t.text     "images",                limit: 65535
     t.string   "slug"
     t.integer  "status"
+    t.string   "featured_image"
     t.index ["advertisement_type_id"], name: "index_advertisements_on_advertisement_type_id", using: :btree
     t.index ["category_id"], name: "index_advertisements_on_category_id", using: :btree
     t.index ["slug"], name: "index_advertisements_on_slug", unique: true, using: :btree

@@ -19,6 +19,8 @@ class Advertisement < ActiveRecord::Base
 	# picture - name of the attribute
 	mount_uploaders :images, ImageUploader
 
+	mount_uploader :featured_image, FeaturedImageUploader
+
 	validates :title, presence: true
 	validates :price, presence: true
 	validates :year, presence: true
@@ -28,13 +30,6 @@ class Advertisement < ActiveRecord::Base
 	enum status: [:active, :inactive, :pending, :rejected]
 
 	after_commit :send_email, if: :status_changed?
-
-	# after_commit do
-	# 	if self.previous_changes.has_key?("status")
-	# 		@advertisement = self
-	# 		UserMailer.advertisement_updated(user.email, self).deliver_now
-	# 	end
-	# end
 
 	# TODO - ovo refaktorisati
 	def save_all advertisement_informations
@@ -106,7 +101,9 @@ class Advertisement < ActiveRecord::Base
     private
 
     def status_changed?
-    	previous_changes.has_key?("status")
+    	if !pending?  																																																																																																																																																																																										
+    		ret_val = previous_changes.has_key?("status") 
+    	end
     end
 
     def send_email

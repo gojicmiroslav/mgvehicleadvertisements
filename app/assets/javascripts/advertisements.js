@@ -33,12 +33,13 @@ jQuery( "#advertisement_year" ).datepicker({
 var validator = $('#advertisement_form').validate({ // initialize the plugin
     rules: {
     	vehicle_brands: "required",
-      'advertisement[title]': {
+        'advertisement[title]': {
           required: true,
-          minlength: 10
-      },
-      'advertisement[price]': "required",
-      'advertisement[year]': "required"
+          minlength: 10,
+          maxlength: 100
+      	},
+      	'advertisement[price]': "required",
+      	'advertisement[year]': "required"
     },
 
     messages: {
