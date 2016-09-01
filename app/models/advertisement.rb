@@ -33,6 +33,7 @@ class Advertisement < ActiveRecord::Base
 
 	# TODO - ovo refaktorisati
 	def save_all advertisement_informations
+		advertisement_informations ||= {}
 	  	advertisement_informations.each do |info_id, value|
 	  		a = AdvertisementInformation.create(
         			advertisement: self,

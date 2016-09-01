@@ -1,6 +1,9 @@
 FactoryGirl.define do
-	factory :option do
+ 
+ 	factory :item do
  		name ""
+ 		information
  		categories []
  	end
-end
+ 
+end 

@@ -48,6 +48,7 @@ gem 'dropzonejs-rails'
 gem 'blueimp-gallery'
 gem 'will_paginate'
 gem 'friendly_id', '~> 5.1.0'
+gem 'cancancan', '~> 1.10'
 
 group :development, :test do
     # Call 'byebug' anywhere in the code to stop execution and get a debugger console
