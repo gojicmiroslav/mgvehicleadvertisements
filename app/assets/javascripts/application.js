@@ -22,3 +22,6 @@
 //= require blueimp-gallery-all
 //= require spin
 //= require app
+//= require react
+//= require react_ujs
+//= require components

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830184210) do
+ActiveRecord::Schema.define(version: 20160901202621) do
 
   create_table "advertisement_informations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "value"
@@ -93,6 +93,17 @@ ActiveRecord::Schema.define(version: 20160830184210) do
     t.integer "vehicle_brand_id", null: false
     t.index ["category_id"], name: "index_categories_vehicle_brands_on_category_id", using: :btree
     t.index ["vehicle_brand_id"], name: "index_categories_vehicle_brands_on_vehicle_brand_id", using: :btree
+  end
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "author"
+    t.text     "body",             limit: 65535
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "advertisement_id"
+    t.string   "ancestry"
+    t.index ["advertisement_id"], name: "index_comments_on_advertisement_id", using: :btree
+    t.index ["ancestry"], name: "index_comments_on_ancestry", using: :btree
   end
 
   create_table "information", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -184,6 +195,7 @@ ActiveRecord::Schema.define(version: 20160830184210) do
   add_foreign_key "categories_options", "options"
   add_foreign_key "categories_vehicle_brands", "categories"
   add_foreign_key "categories_vehicle_brands", "vehicle_brands"
+  add_foreign_key "comments", "advertisements"
   add_foreign_key "information", "information_types", on_update: :cascade, on_delete: :cascade
   add_foreign_key "information_items", "information"
   add_foreign_key "information_items", "items"

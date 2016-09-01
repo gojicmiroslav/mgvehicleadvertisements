@@ -16,7 +16,7 @@ RSpec.describe Advertisement, type: :model do
 	it { should have_and_belong_to_many :options }
 	it { should have_many :advertisement_informations }
 	it { should have_many(:informations).through(:advertisement_informations) }
-	
+	it { should have_many :comments }
 
   	context "testing save all method" do
   		before do

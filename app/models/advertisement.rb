@@ -1,4 +1,4 @@
-class Advertisement < ActiveRecord::Base
+class Advertisement < ApplicationRecord
 	extend FriendlyId
 	friendly_id :title, use: [:slugged, :finders]
 
@@ -9,6 +9,7 @@ class Advertisement < ActiveRecord::Base
 	has_and_belongs_to_many :options, autosave: true
 	has_many :advertisement_informations, autosave: true, dependent: :destroy
 	has_many :informations, through: :advertisement_informations
+	has_many :comments
 
 	# this creates advertisement_informations_attributes= method on Advertisement that allows
 	# create, update and delete destroy advertisement_informations

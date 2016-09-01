@@ -32,6 +32,7 @@ class AdvertisementsController < ApplicationController
     end
 
     @options = @advertisement.options
+    @comments = @advertisement.comments
   end
 
   def new
