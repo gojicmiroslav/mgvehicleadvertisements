@@ -51,6 +51,8 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'cancancan', '~> 1.10'
 gem 'ancestry'
 gem 'react-rails'
+gem 'flux-rails-assets'
+gem 'lodash-rails'
 
 group :development, :test do
     # Call 'byebug' anywhere in the code to stop execution and get a debugger console
