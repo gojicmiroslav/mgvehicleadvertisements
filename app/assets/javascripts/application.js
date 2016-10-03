@@ -1,3 +1,5 @@
+//= require webpack-bundle
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -22,9 +24,4 @@
 //= require blueimp-gallery-all
 //= require spin
 //= require lodash
-//= require react
-//= require react_ujs
-//= require flux
-//= require eventemitter
-//= require components
-//= require flux_app
+

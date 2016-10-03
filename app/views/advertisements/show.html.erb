@@ -103,7 +103,9 @@
 <div class="row">
     <div class="col-md-8 comments-page">    
         <h3>Comments</h3><br/>
-        <%= react_component('CommentList') %>
+        <%= react_component("CommentApp", 
+                              props: { comments: @comments }, 
+                              prerender: false) %>
     </div>
 </div>
 

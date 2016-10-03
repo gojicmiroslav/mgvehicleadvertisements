@@ -274,6 +274,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
+    libv8 (5.0.71.48.3)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -289,6 +290,8 @@ GEM
     mime-types-data (3.2016.0521)
     mini_magick (4.5.1)
     mini_portile2 (2.1.0)
+    mini_racer (0.1.4)
+      libv8 (~> 5.0, < 5.1.11)
     minitest (5.9.0)
     multi_json (1.12.1)
     mysql2 (0.4.4)
@@ -478,6 +481,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   lodash-rails
   mini_magick
+  mini_racer
   mysql2 (>= 0.3.18, < 0.5)
   pg
   phantomjs
