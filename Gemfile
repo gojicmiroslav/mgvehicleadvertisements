@@ -50,8 +50,6 @@ gem 'will_paginate'
 gem 'friendly_id', '~> 5.1.0'
 gem 'cancancan', '~> 1.10'
 gem 'ancestry'
-gem 'flux-rails-assets'
-gem 'lodash-rails'
 gem 'react_on_rails', '~> 6'
 
 group :development, :test do

@@ -23,5 +23,4 @@
 //= require sweet-alert-confirm
 //= require blueimp-gallery-all
 //= require spin
-//= require lodash
 

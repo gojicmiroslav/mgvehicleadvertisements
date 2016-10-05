@@ -1,23 +1,37 @@
 import React, { PropTypes } from 'react';
 import Comment from '../components/Comment';
+import CommentStore from '../../../flux/stores/comment_store';
 
-// Simple example of a React "smart" component
 export default class CommentList extends React.Component {
     static get propTypes(){
         return {
-            comments: PropTypes.array.isRequired, 
+            comments: PropTypes.array, 
         }
     }
 
     constructor(props, context) {
         super(props, context);
         this.state = { comments: this.props.comments };
+        this._onChange = this._onChange.bind(this);
+    }
+
+    componentDidMount(){
+       CommentStore.addChangeListener(this._onChange);
+    }
+ 
+    componentWillUnmount(){
+       CommentStore.removeChangeListener(this._onChange);
+    }
+ 
+    _onChange(){
+       this.forceUpdate();
     }
 
     render() {
+        console.log('Render...');
         return (
             <div>
-                {this.state.comments.map((comment,i) => {
+                {CommentStore.comments().map((comment,i) => {
                     return <Comment 
                                 key={i}
                                 author={comment.author} 
@@ -28,3 +42,6 @@ export default class CommentList extends React.Component {
         );
     }
 }
+
+window.Component = React.Component;
+window.CommentList = CommentList;

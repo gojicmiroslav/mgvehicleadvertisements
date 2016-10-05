@@ -9,7 +9,7 @@ const config = {
     'es5-shim/es5-shim',
     'es5-shim/es5-sham',
     'babel-polyfill',
-    './app/bundles/Comments/startup/CommentApp'
+    './app/bundles/Comments/startup/CommentApp',
   ],
 
   output: {
