@@ -2,7 +2,7 @@ import Constants from './constants';
 import AppDispatcher from './dispatcher';
 
 class Actions {
-	addComment(params){
+	static addComment(params){
 		AppDispatcher.dispatch({
 			actionType: Constants.ADD_COMMENT,
 			comment: params
@@ -10,5 +10,4 @@ class Actions {
 	}
 }
 
-window.Actions = new Actions();
 export default Actions;

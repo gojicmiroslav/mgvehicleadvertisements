@@ -1,31 +1,45 @@
 import Constants from '../constants';
 import AppDispatcher from '../dispatcher';
 import {EventEmitter} from 'events';
-import _ from 'lodash';
 
-var CommentStore = new _.extend({}, EventEmitter.prototype, {
- 	_comments: [],
+class CommentStore extends EventEmitter {
+	constructor(){
+		super();
+		this._comments = [];
+
+		AppDispatcher.register((payload) => {
+		 	var action = payload.actionType;
+			switch(action){
+				case Constants.ADD_COMMENT:
+					this.addComment(payload.comment);
+					this.emitChange();
+					break;
+				default:
+					// NO-OP
+			}
+		});
+	}
  
- 	addComment: function(comment){
+ 	addComment(comment){
  		this._comments[comment.id] = comment;
- 	},
+ 		console.log(this._comments);
+ 	}
  
- 	comments: function(){
+ 	comments(){
  		return this._comments;
- 	},
+ 	}
  
- 	addChangeListener: function(callback){
+ 	addChangeListener(callback){
  		this.on(Constants.CHANGE_EVENT, callback);
- 	},
+ 	}
  
- 	removeChangeListener: function(callback){
+ 	removeChangeListener(callback){
  		this.removeListener(Constants.CHANGE_EVENT, callback);
- 	},
+ 	}
  
- 	emitChange: function(){
+ 	emitChange(){
  		this.emit(Constants.CHANGE_EVENT);
  	}
- });
+}
 
-window.Store = CommentStore;
 export default CommentStore;

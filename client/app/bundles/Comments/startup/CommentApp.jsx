@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactOnRails from 'react-on-rails';
-import CommentList from '../containers/CommentList';
+import CommentSection from '../containers/CommentSection';
+import CommentStore from '../../../flux/stores/comment_store';
 import Actions from '../../../flux/actions';
 
+//window.CommentStore = CommentStore;
+window.Actions = Actions;
+
 const CommentApp = (props) => (
-  <CommentList {...props} />
+  <CommentSection />
 );
 
 ReactOnRails.register({ CommentApp });

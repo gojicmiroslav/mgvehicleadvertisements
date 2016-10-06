@@ -16,11 +16,11 @@ export default class CommentList extends React.Component {
     }
 
     componentDidMount(){
-       CommentStore.addChangeListener(this._onChange);
+       this.props.store.addChangeListener(this._onChange);
     }
  
     componentWillUnmount(){
-       CommentStore.removeChangeListener(this._onChange);
+       this.props.store.removeChangeListener(this._onChange);
     }
  
     _onChange(){
@@ -31,8 +31,8 @@ export default class CommentList extends React.Component {
         console.log('Render...');
         return (
             <div>
-                {CommentStore.comments().map((comment,i) => {
-                    return <Comment 
+                {this.props.store.comments().map((comment,i) => {
+                    return  <Comment 
                                 key={i}
                                 author={comment.author} 
                                 body={comment.body} 
@@ -42,6 +42,3 @@ export default class CommentList extends React.Component {
         );
     }
 }
-
-window.Component = React.Component;
-window.CommentList = CommentList;
