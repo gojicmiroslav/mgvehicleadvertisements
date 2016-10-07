@@ -14,6 +14,10 @@ class CommentStore extends EventEmitter {
 					this.addComment(payload.comment);
 					this.emitChange();
 					break;
+				case Constants.SET_COMMENTS:
+					this.setComments(payload.comments);
+					this.emitChange();
+					break;	
 				default:
 					// NO-OP
 			}
@@ -22,7 +26,12 @@ class CommentStore extends EventEmitter {
  
  	addComment(comment){
  		this._comments[comment.id || this._comments.length] = comment;
- 		console.log(this._comments);
+ 	}
+
+ 	setComments(comments){
+ 		for(var i in comments){
+ 			this.addComment(comments[i]);
+ 		}
  	}
  
  	comments(){

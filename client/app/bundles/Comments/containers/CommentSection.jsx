@@ -5,10 +5,11 @@ import CommentForm from '../components/CommentForm';
 import Actions from '../../../flux/actions';
 
 class CommentSection extends React.Component {
-	constructor(){
+	constructor(props){
 		super();
 		this.store = new CommentStore();
 		this.actions = Actions;
+		this.actions.setComments(props);
 	}
 
 	static get childContextTypes(){

@@ -5,7 +5,7 @@ import CommentStore from '../../../flux/stores/comment_store';
 import Actions from '../../../flux/actions';
 
 const CommentApp = (props) => (
-  <CommentSection />
+  <CommentSection {...props}/>
 );
 
 ReactOnRails.register({ CommentApp });
