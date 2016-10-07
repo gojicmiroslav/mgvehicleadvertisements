@@ -6,6 +6,7 @@ export default class Comment extends React.Component {
 			id: React.PropTypes.number,
 			author: React.PropTypes.string,
 			body: React.PropTypes.string,
+			rank: React.PropTypes.number,
 			created_at: React.PropTypes.string
 		}
 	}
