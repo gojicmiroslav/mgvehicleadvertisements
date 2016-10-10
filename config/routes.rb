@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => :registrations }
   resources :users, only: :show
-  resources :advertisements
+  resources :advertisements do
+    resources :comments
+  end
   resources :vehicle_models
   resources :vehicle_brands, only: [:index, :show]
   resources :options
