@@ -1,9 +1,18 @@
 import React, { PropTypes } from 'react';
+import _ from 'lodash';
 
 class CommentForm extends React.Component {
-	constructor(){
+	static get propTypes(){
+		return {
+			parent_id: React.PropTypes.number,
+			isReplying: React.PropTypes.bool,
+			onCommentSubmitted: React.PropTypes.func
+		}
+	}
+
+	constructor(props){
 		super();
-		this.defaultState = { author: '', body: '' };
+		this.defaultState = { author: '', body: ''};
 		this.state = this.defaultState;
 	}
 
@@ -15,7 +24,7 @@ class CommentForm extends React.Component {
 
 	onInputChange(event){
 		let prop = {};
-		// event.target -> inpup
+		// event.target -> input
 		//event.target.name - >input name -> author
 		//event.target.value -> input value -> entered value
 		prop[event.target.name] = event.target.value;
@@ -28,9 +37,12 @@ class CommentForm extends React.Component {
 		if(!this.commentFormIsValid()){
 			return;
 		}
-
-		this.context.actions.addComment(this.state);
+		
+		this.context.actions.addComment(_.merge(this.state, { parent_id: this.props.parent_id }));
 		this.setState(this.defaultState);
+		if(this.props.onCommentSubmitted){
+			this.props.onCommentSubmitted();
+		}
 	}
 
 	commentFormIsValid(){
@@ -54,7 +66,7 @@ class CommentForm extends React.Component {
 	render(){
 		return (
 			<div>
-				<form>
+				<form className={this.props.isReplying ? '' : 'hidden'}>
 					<div className="form-group">
 						<label>Author:</label>
 						<input  type="text" 

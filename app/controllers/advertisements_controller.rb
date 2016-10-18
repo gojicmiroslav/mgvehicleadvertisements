@@ -32,7 +32,8 @@ class AdvertisementsController < ApplicationController
     end
 
     @options = @advertisement.options
-    @comments = @advertisement.comments
+    #@comments = @advertisement.comments
+    @comments = prepare_comments(@advertisement.comments)
   end
 
   def new
@@ -109,6 +110,19 @@ class AdvertisementsController < ApplicationController
     end
 
     return ret_arr
+  end
+
+  def prepare_comments(comments)
+    comments.map do |comment|
+      {
+        id: comment.id,
+        author: comment.author,
+        body: comment.body,
+        created_at: comment.created_at.to_formatted_s(:long),
+        advertisement_id: comment.advertisement_id,
+        parent_id: comment.parent_id
+      }
+    end
   end
 
 end

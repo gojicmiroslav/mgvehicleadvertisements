@@ -3,25 +3,30 @@ import Comment from '../components/Comment';
 import CommentStore from '../../../flux/stores/comment_store';
 
 export default class CommentList extends React.Component {
+    static get propTypes(){
+        return {
+            parent_id: React.PropTypes.number
+        }
+    }
+
     static get contextTypes(){
         return {
             store: React.PropTypes.object.isRequired
         }
     }
 
-    constructor(props, context) {
-        super(props, context);
-        this.state = { comments: this.props.comments };
+    constructor(props){
+        super();
     }
 
     componentDidMount(){
        this.context.store.addChangeListener(this._onChange.bind(this));
     }
- 
+
     componentWillUnmount(){
        this.context.store.removeChangeListener(this._onChange.bind(this));
     }
- 
+
     _onChange(){
        this.forceUpdate();
     }
@@ -29,15 +34,11 @@ export default class CommentList extends React.Component {
     render() {
         console.log('Render...');
         return (
-            <div>
-                {this.context.store.comments().map((comment,i) => {
-                    return  <Comment 
-                                key={i}
-                                author={comment.author} 
-                                body={comment.body} 
-                                created_at={comment.created_at} />
+            <ul>
+                {this.context.store.comments(this.props.parent_id).map((comment,i) => {
+                    return  <Comment key={comment.id} {...comment} />
                 })}
-            </div>
+            </ul>
         );
     }
 }

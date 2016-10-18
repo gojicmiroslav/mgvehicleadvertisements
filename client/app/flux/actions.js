@@ -9,9 +9,10 @@ class Actions {
 		})
 		.then(resp => {
 			// transform response for the next function
-			return resp.json();
+			return resp;
 		})
 		.then(comment => {
+			console.log("Returned comment: " + comment.parent_id);
 			AppDispatcher.dispatch({
 				actionType: Constants.ADD_COMMENT,
 				comment: comment

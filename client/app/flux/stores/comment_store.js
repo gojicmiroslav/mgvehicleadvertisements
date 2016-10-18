@@ -17,13 +17,13 @@ class CommentStore extends EventEmitter {
 				case Constants.SET_COMMENTS:
 					this.setComments(payload.comments);
 					this.emitChange();
-					break;	
+					break;
 				default:
 					// NO-OP
 			}
 		});
 	}
- 
+
  	addComment(comment){
  		this._comments[comment.id || this._comments.length] = comment;
  	}
@@ -33,19 +33,22 @@ class CommentStore extends EventEmitter {
  			this.addComment(comments[i]);
  		}
  	}
- 
- 	comments(){
- 		return this._comments;
+
+ 	comments(parentId){
+		//return only children comments for given parentId
+ 	 	return this._comments.filter(c => {
+	 		return c && c.parent_id == parentId;
+		});
  	}
- 
+
  	addChangeListener(callback){
  		this.on(Constants.CHANGE_EVENT, callback);
  	}
- 
+
  	removeChangeListener(callback){
  		this.removeListener(Constants.CHANGE_EVENT, callback);
  	}
- 
+
  	emitChange(){
  		this.emit(Constants.CHANGE_EVENT);
  	}
