@@ -120,7 +120,8 @@ class AdvertisementsController < ApplicationController
         body: comment.body,
         created_at: comment.created_at.to_formatted_s(:long),
         advertisement_id: comment.advertisement_id,
-        parent_id: comment.parent_id
+        parent_id: comment.parent_id,
+        rank: comment.rank
       }
     end
   end

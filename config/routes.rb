@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => :registrations }
   resources :users, only: :show
   resources :advertisements do
-    resources :comments
+    resources :comments do
+      put 'upvote', to: 'comments#upvote'
+    end
   end
   resources :vehicle_models
   resources :vehicle_brands, only: [:index, :show]

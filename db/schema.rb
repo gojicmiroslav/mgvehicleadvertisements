@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901202621) do
+ActiveRecord::Schema.define(version: 20161018203054) do
 
   create_table "advertisement_informations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "value"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20160901202621) do
     t.datetime "updated_at",                     null: false
     t.integer  "advertisement_id"
     t.string   "ancestry"
+    t.integer  "rank"
     t.index ["advertisement_id"], name: "index_comments_on_advertisement_id", using: :btree
     t.index ["ancestry"], name: "index_comments_on_ancestry", using: :btree
   end

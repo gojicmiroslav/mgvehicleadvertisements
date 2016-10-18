@@ -32,7 +32,6 @@ export default class CommentList extends React.Component {
     }
 
     render() {
-        console.log('Render...');
         return (
             <ul>
                 {this.context.store.comments(this.props.parent_id).map((comment,i) => {

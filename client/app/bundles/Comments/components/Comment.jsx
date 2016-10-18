@@ -8,8 +8,15 @@ export default class Comment extends React.Component {
 			id: React.PropTypes.number,
 			author: React.PropTypes.string,
 			body: React.PropTypes.string,
-			created_at: React.PropTypes.string
+			created_at: React.PropTypes.string,
+			rank: React.PropTypes.number
 		}
+	}
+
+	static get contextTypes(){
+		return {
+			actions: React.PropTypes.object.isRequired
+		};
 	}
 
 	constructor(props){
@@ -25,6 +32,10 @@ export default class Comment extends React.Component {
 		this.setState({ isReplying: false });
 	}
 
+	onUpvote(event){
+		this.context.actions.upvoteComment(this.props);
+	}
+
 	render(){
 		const replyText = this.state.isReplying ? 'Hide' : 'Reply';
 		return(
@@ -36,9 +47,11 @@ export default class Comment extends React.Component {
 	     			</div>
 	     			<div className="panel-body">
 	     				<blockquote> {this.props.body} </blockquote> <hr />
+	     				<b>Rank:</b> <span className="label label-default">{this.props.rank || 0}</span><br /><br />
 	     				<button className="btn btn-info btn-sm" onClick={this.onToggleReply.bind(this)}>
               				{replyText}
             			</button>
+            			<button className="btn btn-primary btn-sm" onClick={this.onUpvote.bind(this)}>+1</button>
             			<hr />
 	     				<CommentForm 
 	     					parent_id={this.props.id} 
