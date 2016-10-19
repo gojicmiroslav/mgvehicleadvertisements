@@ -15,7 +15,7 @@ class Advertisement < ApplicationRecord
 	# create, update and delete destroy advertisement_informations
 	accepts_nested_attributes_for :advertisement_informations
 	accepts_nested_attributes_for :options
-	
+
 	serialize :images, Array
 	# picture - name of the attribute
 	mount_uploaders :images, ImageUploader
@@ -28,6 +28,7 @@ class Advertisement < ApplicationRecord
 	validates :vehicle_model, presence: true
 	validates :user, presence: true
 
+	# active - 0, inactive - 1, pending - 2, rejected - 3
 	enum status: [:active, :inactive, :pending, :rejected]
 
 	after_commit :send_email, if: :status_changed?
@@ -90,7 +91,7 @@ class Advertisement < ApplicationRecord
 		end
 
 		return ret_val
-	end 
+	end
 
 	def slug_candidates
 		[
@@ -103,8 +104,8 @@ class Advertisement < ApplicationRecord
     private
 
     def status_changed?
-    	if !pending?  																																																																																																																																																																																										
-    		ret_val = previous_changes.has_key?("status") 
+    	if !pending?
+    		ret_val = previous_changes.has_key?("status")
     	end
     end
 

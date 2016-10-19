@@ -39,43 +39,43 @@ User.create!(firstname: "Maja",
 			password_confirmation: "password123",
 			confirmed_at: Time.zone.now )
 
-Category.create!(name: "Cars", 
-								 description: "Contrary to popular belief, Lorem Ipsum is not simply random text. 
-								 							It has roots in a piece of classical Latin literature from 45 BC, making it 
-								 							over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney 
-								 							College in Virginia, looked up one of the more obscure Latin words, 
-								 							consectetur, from a Lorem Ipsum passage, and going through the cites of the 
-								 							word in classical literature, discovered the undoubtable source. 
-								 							Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 
-								 							de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, 
-								 							written in 45 BC. This book is a treatise on the theory of ethics, 
-								 							very popular during the Renaissance. The first line of Lorem Ipsum, 
+Category.create!(name: "Cars",
+								 description: "Contrary to popular belief, Lorem Ipsum is not simply random text.
+								 							It has roots in a piece of classical Latin literature from 45 BC, making it
+								 							over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
+								 							College in Virginia, looked up one of the more obscure Latin words,
+								 							consectetur, from a Lorem Ipsum passage, and going through the cites of the
+								 							word in classical literature, discovered the undoubtable source.
+								 							Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of
+								 							de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero,
+								 							written in 45 BC. This book is a treatise on the theory of ethics,
+								 							very popular during the Renaissance. The first line of Lorem Ipsum,
 								 							Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.")
 
-Category.create!(name: "Bicycles", 
-								 description: "Contrary to popular belief, Lorem Ipsum is not simply random text. 
-								 							It has roots in a piece of classical Latin literature from 45 BC, making it 
-								 							over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney 
-								 							College in Virginia, looked up one of the more obscure Latin words, 
-								 							consectetur, from a Lorem Ipsum passage, and going through the cites of the 
-								 							word in classical literature, discovered the undoubtable source. 
-								 							Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 
-								 							de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, 
-								 							written in 45 BC. This book is a treatise on the theory of ethics, 
-								 							very popular during the Renaissance. The first line of Lorem Ipsum, 
+Category.create!(name: "Bicycles",
+								 description: "Contrary to popular belief, Lorem Ipsum is not simply random text.
+								 							It has roots in a piece of classical Latin literature from 45 BC, making it
+								 							over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
+								 							College in Virginia, looked up one of the more obscure Latin words,
+								 							consectetur, from a Lorem Ipsum passage, and going through the cites of the
+								 							word in classical literature, discovered the undoubtable source.
+								 							Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of
+								 							de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero,
+								 							written in 45 BC. This book is a treatise on the theory of ethics,
+								 							very popular during the Renaissance. The first line of Lorem Ipsum,
 								 							Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.")
 
-Category.create!(name: "Trucks", 
-								 description: "Contrary to popular belief, Lorem Ipsum is not simply random text. 
-								 							It has roots in a piece of classical Latin literature from 45 BC, making it 
-								 							over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney 
-								 							College in Virginia, looked up one of the more obscure Latin words, 
-								 							consectetur, from a Lorem Ipsum passage, and going through the cites of the 
-								 							word in classical literature, discovered the undoubtable source. 
-								 							Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 
-								 							de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, 
-								 							written in 45 BC. This book is a treatise on the theory of ethics, 
-								 							very popular during the Renaissance. The first line of Lorem Ipsum, 
+Category.create!(name: "Trucks",
+								 description: "Contrary to popular belief, Lorem Ipsum is not simply random text.
+								 							It has roots in a piece of classical Latin literature from 45 BC, making it
+								 							over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
+								 							College in Virginia, looked up one of the more obscure Latin words,
+								 							consectetur, from a Lorem Ipsum passage, and going through the cites of the
+								 							word in classical literature, discovered the undoubtable source.
+								 							Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of
+								 							de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero,
+								 							written in 45 BC. This book is a treatise on the theory of ethics,
+								 							very popular during the Renaissance. The first line of Lorem Ipsum,
 								 							Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.")
 
 
@@ -1479,8 +1479,8 @@ Option.create!(name: "Disability Equipped")
 Option.create!(name: "Lift Kit")
 Option.create!(name: "Trailer Hitch")
 Option.create!(name: "Back Break")
-Option.create!(name: "Hands Break") 
-Option.create!(name: "Lights") 
+Option.create!(name: "Hands Break")
+Option.create!(name: "Lights")
 
 # CategoryOption
 c = Category.find_by(name: "Cars")
@@ -1593,9 +1593,8 @@ c.save
 ad1 = Advertisement.create!(
 	title: "2010 BMW 530 D GT",
 	description: "",
-	price: 25.999, 
+	price: 25.999,
 	year: DateTime.strptime("09/14/2009", "%m/%d/%Y"),
-	active: true,
 	category: Category.first,
 	vehicle_model: VehicleModel.first,
 	user: User.first,
@@ -1683,9 +1682,8 @@ ad1.save
 ad2 = Advertisement.create!(
 	title: "Mountain Bike Boardman",
 	description: "",
-	price: 500, 
+	price: 500,
 	year: DateTime.strptime("12/12/2014", "%m/%d/%Y"),
-	active: true,
 	category: Category.find_by(name: "Bicycles"),
 	vehicle_model: VehicleModel.find_by(name: "Boardman Mountain Bike Team 29er"),
 	user: User.first,

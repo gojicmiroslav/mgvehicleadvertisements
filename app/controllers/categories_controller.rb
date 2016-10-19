@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  
+
   def index
     @category = Category.find_by(name: "Cars")
     @categories = Category.all
@@ -11,7 +11,6 @@ class CategoriesController < ApplicationController
     @category = Category.friendly.find(params[:id])
     @categories = Category.all
     @advertisements = @category.advertisements
-                                .active
                                 .paginate(page: params[:page], per_page: 9)
                                 .order('created_at DESC')
     @vehicle_brands = @category.vehicle_brands
