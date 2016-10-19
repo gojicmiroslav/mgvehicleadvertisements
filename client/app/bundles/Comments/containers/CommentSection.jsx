@@ -7,9 +7,10 @@ import Actions from '../../../flux/actions';
 class CommentSection extends React.Component {
 	constructor(props){
 		super();
+
 		this.store = new CommentStore();
-		this.actions = new Actions(props[0].advertisement_id);
-		this.actions.setComments(props);
+		this.actions = new Actions(props.advertisement_id);
+		this.actions.setComments(props.comments);
 	}
 
 	static get childContextTypes(){
