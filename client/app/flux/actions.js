@@ -5,6 +5,7 @@ import Api from './../lib/api';
 class Actions {
 	constructor(advertisementId){
 		this.advertisementId = advertisementId;
+		this.watchInterval = setInterval(this.watch.bind(this), 1000);
 	}
 
 	addComment(params){
@@ -39,6 +40,12 @@ class Actions {
 				comment: comment
 			});
 		});
+	}
+
+	watch(){
+		Api.get(`/advertisements/${this.advertisementId}/comments`).then( comments => {
+      		this.setComments(comments);
+     	});
 	}
 }
 
