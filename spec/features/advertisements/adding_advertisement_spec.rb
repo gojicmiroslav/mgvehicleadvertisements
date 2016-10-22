@@ -29,8 +29,13 @@ RSpec.feature "Adding Advertisement", :feature do
 			# 	signin(users(:miroslav).email, "password", false)
 			# end
 
+			let(:user){ users(:miroslav) }
+			before do
+ 				login_as(user, :scope => :user)
+ 			end
+
 			scenario "showing and hidding form when categories select changes" do
-				signin_login_page(users(:miroslav).email, 'password')
+				#signin_login_page(users(:miroslav).email, 'password')
 				visit new_advertisement_path	
 				expect(page).to have_select('categories', selected: "Select...")
 				expect(page).to have_content('Please select category to continue. Thank you!')

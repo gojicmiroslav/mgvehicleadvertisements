@@ -45,13 +45,8 @@ class Advertisement < ApplicationRecord
 	  		self.advertisement_informations << a
 	  	end
 
-		saved = self.save
-	  	if saved
-			# set to default
-			self.pending!
-		end
-
-		return saved
+	  	self.pending!
+		self.save
 	end
 
 	def update_all(advertisement_params, informations)

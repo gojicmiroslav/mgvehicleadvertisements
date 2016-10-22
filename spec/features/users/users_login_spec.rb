@@ -10,7 +10,6 @@ RSpec.feature "Users Login", :feature do
 	fixtures :vehicle_models
 	fixtures :options
 	fixtures :advertisements
-	#fixtures :categories
 
 	#======INVALID LOGIN=========================================
 	context "INVALID DATA" do
