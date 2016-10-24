@@ -7,6 +7,11 @@ feature 'Home page', type: :feature do
  	fixtures :vehicle_brands
  	fixtures :advertisements
 
+ 	let(:active_advertisement){ advertisements(:first_advertisement) }
+ 	let(:rejected_advertisement){ advertisements(:car_rejected_advertisement) }
+ 	let(:inactive_advertisement){ advertisements(:car_inactive_advertisement) }
+ 	let(:pending_advertisement){ advertisements(:car_pending_advertisement) }
+
 	scenario "should have title Home" do
 		visit root_path
 		expect(page).to have_selector("title", :text => full_title, :visible => false)
@@ -30,4 +35,12 @@ feature 'Home page', type: :feature do
 		end
 	end
 
+	scenario "it shows only active advertisements" do
+ 		visit root_path
+ 
+ 		expect(page).to have_content(active_advertisement.title)
+ 		expect(page).not_to have_content(rejected_advertisement)
+ 		expect(page).not_to have_content(inactive_advertisement)
+ 		expect(page).not_to have_content(pending_advertisement)
+ 	end
 end

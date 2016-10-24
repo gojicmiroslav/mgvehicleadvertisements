@@ -12,6 +12,17 @@ feature "Pagination" do
 	fixtures :options
 	fixtures :advertisements
 
+	before(:all) do
+		Capybara.register_driver :poltergeist do |app|
+			Capybara::Poltergeist::Driver.new(app, :phantomjs => Phantomjs.path)
+		end
+		Capybara.javascript_driver = :poltergeist
+	end
+
+	after(:all) do
+		Capybara.use_default_driver
+	end
+
 	shared_examples "shows div pagination" do
 		it 'shows div pagination' do
 			expect(page).to have_css('div.pagination')

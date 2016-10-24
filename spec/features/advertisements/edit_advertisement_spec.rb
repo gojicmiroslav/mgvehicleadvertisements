@@ -17,13 +17,13 @@ RSpec.feature "Edit Advertisement", :feature do
 
 		before(:all) do
 			Capybara.register_driver :poltergeist do |app|
-    		Capybara::Poltergeist::Driver.new(app, :phantomjs => Phantomjs.path)
+    			Capybara::Poltergeist::Driver.new(app, :phantomjs => Phantomjs.path)
 			end
 			Capybara.javascript_driver = :poltergeist
 		end
 
 		after(:all) do
-  		Capybara.use_default_driver
+  			Capybara.use_default_driver
 		end
 
 		# car
@@ -86,8 +86,13 @@ RSpec.feature "Edit Advertisement", :feature do
 		end
 
 		context "testing page layout" do
+			let(:user){ users(:miroslav) }
+			
+			before do
+ 				login_as(user, :scope => :user)
+ 			end
+
 			scenario "edit cars layout" do
-				signin_login_page(users(:miroslav).email, 'password')
 				visit edit_advertisement_path(car_advertisement)
 
 				expect(page).to have_content(car_advertisement.category.name)
@@ -135,7 +140,6 @@ RSpec.feature "Edit Advertisement", :feature do
 			end			
 
 			scenario "edit bicycles layout" do
-				signin_login_page(users(:miroslav).email, 'password')
 				visit edit_advertisement_path(bicycle_advertisement)
 
 				expect(page).to have_content(bicycle_advertisement.category.name)
@@ -170,8 +174,12 @@ RSpec.feature "Edit Advertisement", :feature do
 		end	
 
 		context "VALIDA DATA" do
+			let(:user){ users(:miroslav) }
+			before do
+ 				login_as(user, :scope => :user)
+ 			end
+
 			scenario "user successfully edit cars advertisement" do
-				signin_login_page(users(:miroslav).email, 'password')
 				visit edit_advertisement_path(car_advertisement)
 				fill_in("advertisement[title]", with: "2010 BMW 530 D GT - Edited")
 				fill_in("advertisement[price]", with: 30000)
@@ -205,7 +213,6 @@ RSpec.feature "Edit Advertisement", :feature do
 			end
 
 			scenario "user successfully edit bicycles advertisement" do
-				signin_login_page(users(:miroslav).email, 'password')
 				visit edit_advertisement_path(bicycle_advertisement)												
 				fill_in("advertisement[title]", with: "Mountain Bike Boardman - Edited")
 				fill_in("advertisement[price]", with: 4000)
@@ -234,8 +241,13 @@ RSpec.feature "Edit Advertisement", :feature do
 		end # context VALID DATA
 
 		context "INVALID DATA" do			
+			let(:user){ users(:miroslav) }
+			
+			before do
+ 				login_as(user, :scope => :user)
+ 			end
+
 			scenario "unsuccessful edit car advertisement" do
-				signin_login_page(users(:miroslav).email, 'password')
 				visit edit_advertisement_path(car_advertisement)
 				fill_in("advertisement[title]", with: "")
 				fill_in("advertisement[price]", with: "")
@@ -251,7 +263,6 @@ RSpec.feature "Edit Advertisement", :feature do
 			end
 
 			scenario "unsuccessful edit bicycle advertisement" do
-				signin_login_page(users(:miroslav).email, 'password')
 				visit edit_advertisement_path(bicycle_advertisement)
 				fill_in("advertisement[title]", with: "")
 				fill_in("advertisement[price]", with: "")

@@ -31,6 +31,8 @@ class Advertisement < ApplicationRecord
 	# active - 0, inactive - 1, pending - 2, rejected - 3
 	enum status: [:active, :inactive, :pending, :rejected]
 
+	scope :active, -> { where(status: self.statuses[:active]) }
+
 	after_commit :send_email, if: :status_changed?
 
 	# TODO - ovo refaktorisati

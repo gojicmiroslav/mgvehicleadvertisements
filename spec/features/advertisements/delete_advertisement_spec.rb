@@ -14,8 +14,12 @@ RSpec.feature "Delete Advertisement", :feature do
 		fixtures :options
 		fixtures :advertisements
 
+		let(:user){ users(:miroslav) }
+		before do
+			login_as(user, :scope => :user)
+		end
+
 		scenario "delete advertisement" do
-			signin_front_page(users(:miroslav).email, 'password')
 			visit advertisements_path
 
 			expect do
