@@ -1,11 +1,11 @@
 
-	<% if index % 3 == 0 %>
+	<% if index % 4 == 0 %>
 		<div class="row" id="advertisement_row_<%= index %>">
 	<% end %>		
 			
-	<div class="col-md-4">
+	<div class="col-md-3">
 		<div class="advertisement_front">
-		<%= link_to advertisement, id: "advertisement_#{advertisement.id}" do %>
+		<%= link_to advertisement do %>
 			<div class="thumbnail">
 				<%# image = advertisement.images? ? advertisement.images[0].thumb_middle.url : "placeholder.png" %>
 				<% image = advertisement.featured_image? ? advertisement.featured_image.url : "placeholder.png" %>
@@ -21,6 +21,6 @@
 		</div>					
 	</div>
 	
-	<% if index % 3 == 2 %>
+	<% if index % 4 == 3 %>
 		</div><!-- row -->
 	<% end %>	

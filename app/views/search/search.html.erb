@@ -1,0 +1,36 @@
+<% provide(:title, "Search results") %>
+
+<div class="row">
+	<div class="col-md-8">
+		<h3>Search results</h3>
+
+		<%= render 'shared/category_buttons' %>
+
+		<hr />
+
+		<% if @advertisements.present? %>		
+			<% @advertisements.each_with_index do |advertisement, index| %>
+				<%= render partial: 'shared/advertisement_front', locals: { advertisement: advertisement, index: index} %>	
+			<% end %>
+
+			<%= generate_closing_div(@advertisements.length) %> 		
+		<% else %>
+			<h2>No results</h2>
+		<% end %>
+
+	</div>
+
+	<div class="col-md-4">
+		<%= render 'shared/sidebar' %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<% if @advertisements.present? %>
+			<%= will_paginate @advertisements %>
+		<% end %>	
+	</div>
+	<div class="col-sm-3"></div>
+</div>

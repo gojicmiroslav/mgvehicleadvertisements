@@ -1,5 +1,5 @@
 first_advertisement:
- title: 2010 BMW 530 D GT
+ title: 2010 Opel 530 D GT Diesel Commercial
  description: Some description
  price: 25999
  year: <%= Time.now - 1.days  %>
@@ -25,7 +25,7 @@ second_advertisement:
  status: <%= Advertisement.statuses['active'] %>
 
 third_advertisement:
- title: <%= Faker::Lorem.sentence(3, true) %>
+ title: Some advertisement
  description: <%= Faker::Lorem.sentence %>
  price: <%= Faker::Number.decimal(2) %>
  year: <%= Time.now - 2.days  %>
@@ -38,7 +38,7 @@ third_advertisement:
  status: Advertisement.statuses['active']
 
 advertisement_4:
- title: <%= Faker::Lorem.sentence(3, true) %>
+ title: Astra G
  description: <%= Faker::Lorem.sentence %>
  price: <%= Faker::Number.decimal(2) %>
  year: <%= Time.now - 3.days  %>

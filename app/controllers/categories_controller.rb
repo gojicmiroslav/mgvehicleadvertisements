@@ -15,6 +15,13 @@ class CategoriesController < ApplicationController
                                 .paginate(page: params[:page], per_page: 9)
                                 .order('created_at DESC')
     @vehicle_brands = @category.vehicle_brands
+
+    respond_to do |format|
+        format.html 
+        format.json do
+            render json: Category.find(params[:id]).vehicle_brands, status: 200
+        end
+    end
   end
 
   def basic

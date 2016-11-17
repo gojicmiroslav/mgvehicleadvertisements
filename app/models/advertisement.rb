@@ -98,6 +98,44 @@ class Advertisement < ApplicationRecord
 		]
     end
 
+    scope :title_like_term, -> (term) { where("title like ?", "%#{term}%") }
+
+    def self.search(q, paginate)
+    	q.gsub!(/[^a-zA-Z0-9\-]/," ") 
+    	search = q.split
+    	results = none
+
+    	if search.size == 0 
+    		results = all
+    	elsif search.size == 1
+    		results = Advertisement
+					.left_outer_joins(:advertisement_informations)
+					.where("title like ? OR value like ?", "%#{search.first}%", "%#{search.first}%")
+					.distinct
+        elsif search.size > 1
+        	searchable_columns = [:title, :value]
+        	
+        	query = search.map do |term|
+        	 	fields = searchable_columns.map do |column|
+        	 		" #{column} LIKE #{sanitize("%#{term}%")}"
+      			end
+      			"#{fields.join(' OR ')}"
+        	end.join(' OR ')
+
+        	results = Advertisement
+    				.left_outer_joins(:advertisement_informations)
+    				.where(query)
+    				.distinct
+    	else
+    		results = all
+    	end
+
+    	results
+    		.active
+	    	.paginate(page: paginate, per_page: 9)
+            .order('created_at DESC')	
+    end
+
     private
 
     def status_changed?
