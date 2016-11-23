@@ -5,7 +5,14 @@ class SearchController < ApplicationController
     	@categories = Category.all
     	@vehicle_brands = VehicleBrand.all
     	@advertisements = Advertisement.search params[:q], params[:page]
-    	@search = params[:q]
 	end
 
+	def advanced_search
+		@category = Category.friendly.find(params[:category])
+		@categories = Category.all
+		@vehicle_brands = VehicleBrand.all
+
+		@advertisements = Advertisement.advanced_search params, params[:page]
+		render "search/search"
+	end
 end

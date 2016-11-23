@@ -35,8 +35,8 @@ class Category < ActiveRecord::Base
     	return informations
   	end
 
-  	def search_options
-      if name.eql?("Cars")
+  	def self.search_options(name)
+      if name.eql?(name)
         search_options = [
           { title: "Fuel", select_name: "fuel", items_name: "Fuel"},
           { title: "Engine", select_name: "engine", items_name: "Engine" },
@@ -45,7 +45,7 @@ class Category < ActiveRecord::Base
           { title: "Transmission", select_name: "transmission", items_name: "Transmission" },
           { title: "Exterior Color", select_name: "exterior_color", items_name: "Exterior Color" }
         ]
-      elsif name.eql?("Bicycles")
+      elsif name.eql?(name)
         search_options = [
           { title: "Type", select_name: "type", items_name: "Type"},
           { title: "Color", select_name: "color", items_name: "Color" },
@@ -53,7 +53,7 @@ class Category < ActiveRecord::Base
           { title: "Size", select_name: "size", items_name: "Size" },
           { title: "Breaks", select_name: "breaks", items_name: "Breaks" }
         ]
-      elsif name.eql?("Trucks")
+      elsif name.eql?(name)
         search_options = [
           { title: "Fuel", select_name: "fuel", items_name: "Fuel"},
           { title: "Engine", select_name: "engine", items_name: "Engine" },

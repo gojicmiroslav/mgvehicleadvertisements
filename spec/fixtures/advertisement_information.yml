@@ -23,6 +23,22 @@ fuel_advertisement_information:
  advertisement: first_advertisement
  information: fuel  
 
+fuel_advertisement_information_second:
+ value: Gasoline
+ advertisement: third_advertisement
+ information: fuel
+
+fuel_advertisement_information_fourth:
+ value: Gasoline
+ advertisement: advertisement_4
+ information: fuel
+
+fuel_advertisement_information_fourth:
+ value: Diesel
+ advertisement: advertisement_5
+ information: fuel
+
+
 style_advertisement_information:
  value: Commercial
  advertisement: first_advertisement
@@ -33,9 +49,29 @@ drive_advertisement_information:
  advertisement: first_advertisement
  information: drive 
 
+drive_advertisement_information_two:
+ value: FWD
+ advertisement: third_advertisement
+ information: drive 
+
+drive_advertisement_information_three:
+ value: RWD
+ advertisement: advertisement_4
+ information: drive 
+
 transmission_advertisement_information:
  value: Manual
  advertisement: first_advertisement
+ information: transmission
+
+transmission_advertisement_information_two:
+ value: Semi-automatic
+ advertisement: third_advertisement
+ information: transmission
+
+transmission_advertisement_information_three:
+ value: Semi-automatic
+ advertisement: advertisement_4
  information: transmission  
 
 air_condition_advertisement_information:
@@ -43,14 +79,44 @@ air_condition_advertisement_information:
  advertisement: first_advertisement
  information: air_condition
 
+air_condition_advertisement_information_two:
+ value: Manual
+ advertisement: third_advertisement
+ information: air_condition
+
+air_condition_advertisement_information_three:
+ value: Manual
+ advertisement: advertisement_4
+ information: air_condition
+
 engine_advertisement_information:
  value: 8 cylinder
  advertisement: first_advertisement
  information: engine
 
+engine_advertisement_information_two:
+ value: 5 cylinder
+ advertisement: third_advertisement
+ information: engine
+
+engine_advertisement_information_three:
+ value: 6 cylinder
+ advertisement: advertisement_4
+ information: engine
+
 exterior_color_advertisement_information:
- value: White
+ value: Black
  advertisement: first_advertisement
+ information: exterior_color
+
+exterior_color_advertisement_information_two:
+ value: White
+ advertisement: third_advertisement
+ information: exterior_color
+
+exterior_color_advertisement_information_three:
+ value: White
+ advertisement: advertisement_4
  information: exterior_color   
 
 interior_color_advertisement_information:

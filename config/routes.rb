@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get  'help'   => 'static_pages#help'
   get  'about'   => 'static_pages#about'
   get  'contact' => 'static_pages#contact'
-  get 'search', to: 'search#search'
+  get  'search', to: 'search#search'
+  get  'advanced_search', to: 'search#advanced_search'
 
   devise_for :users, :controllers => { :registrations => :registrations }
   resources :users, only: :show

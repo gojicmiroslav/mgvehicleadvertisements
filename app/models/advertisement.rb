@@ -136,6 +136,114 @@ class Advertisement < ApplicationRecord
             .order('created_at DESC')	
     end
 
+    def self.advanced_search(params, paginate)
+    	params.select! {|key, value| !key.eql?("controller")}
+    	params.select! {|key, value| !key.eql?("action")}
+    	params.select! {|key, value| !key.eql?("utf8") }
+    	#remove empty params
+    	category = Category.find(params[:category])
+    	params.select! {|key, value| !value.eql?("")}
+    	params.select! {|key, value| !key.eql?("category")}
+    	query = ""
+    	fields = []
+    	vehicle_brand_exits  = false
+    	fuel_exists = false
+    	engine_exists = false
+    	drive_exists = false
+    	air_condition_exists = false
+    	transmission_exists = false
+    	exterior_color_exists = false
+
+    	params.each do |key, value|	
+    		if key.eql?("min_price") 
+    			fields << " price > #{value} "
+    		end
+
+			if key.eql?("max_price") 
+    			fields << " price < #{value} "
+    		end			    	
+
+			if key.eql?("min_year") 
+				date = Time.new(value.to_i - 1).year
+    			fields << " year > '#{date}' "
+    		end 
+
+    		if key.eql?("max_year") 
+				date = Time.new(value.to_i + 1).year
+    			fields << " year < '#{date}' "
+    		end  
+
+    		if key.eql?("search_vehicle_model") 
+    			fields << " vehicle_model_id = #{value} " 
+    		end 
+
+    		if key.eql?("search_vehicle_brand") 
+    			vehicle_brand_exits = true
+    			fields << " vehicle_brand_id = #{value} " 
+    		end     			
+
+			if key.eql?("fuel") 
+    			fuel_exists = true
+    			information_id = Information.find_by(name: "Fuel").id
+    			information_value = Item.find(value).name
+    			fields << " information_id = #{information_id} AND value LIKE '#{information_value}' " 
+    		end    
+
+    		if key.eql?("engine") 
+    			engine_exists = true
+    			information_id = Information.find_by(name: "Engine").id
+    			information_value = Item.find(value).name
+    			fields << " information_id = #{information_id} and value LIKE '#{information_value}' " 
+    		end 
+
+    		if key.eql?("drive") 
+    			drive_exists = true
+    			information_id = Information.find_by(name: "Drive").id
+    			information_value = Item.find(value).name
+    			fields << " information_id = #{information_id} and value LIKE '#{information_value}' " 
+    		end
+
+    		if key.eql?("air_condition") 
+    			air_condition_exists = true
+    			information_id = Information.find_by(name: "Air Condition").id
+    			information_value = Item.find(value).name
+    			fields << " information_id = #{information_id} and value LIKE '#{information_value}' " 
+    		end   
+
+    		if key.eql?("transmission") 
+    			transmission_exists = true
+    			information_id = Information.find_by(name: "Transmission").id
+    			information_value = Item.find(value).name
+    			fields << " information_id = #{information_id} and value LIKE '#{information_value}' " 
+    		end 
+
+    		if key.eql?("exterior_color") 
+    			exterior_color_exists = true
+    			information_id = Information.find_by(name: "Exterior Color").id
+    			information_value = Item.find(value).name
+    			fields << " information_id = #{information_id} and value LIKE '#{information_value}' " 
+    		end     			    		
+		end
+		query = fields.join(" AND ")
+
+		results = category.advertisements			
+
+		if vehicle_brand_exits
+			results = results.joins(vehicle_model: :vehicle_brand)
+		end
+
+		if(fuel_exists || engine_exists || drive_exists || air_condition_exists || transmission_exists || exterior_color_exists)
+			results = results.joins(:advertisement_informations)
+		end
+
+		results = results.where(query)    	
+
+    	results
+    		.active
+	    	.paginate(page: paginate, per_page: 9)
+            .order('created_at DESC')
+    end
+
     private
 
     def status_changed?
@@ -150,3 +258,4 @@ class Advertisement < ApplicationRecord
     end
 
 end
+

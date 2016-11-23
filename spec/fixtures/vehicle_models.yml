@@ -8,10 +8,10 @@ astra_f:
  category: cars
  vehicle_brand: opel 
 
-insignia:
- name: Insignia
+golf:
+ name: Golf 4
  category: cars
- vehicle_brand: opel  
+ vehicle_brand: volkswagen  
 
 mountain_one:
  name: Boardman Mountain Bike Team 29er

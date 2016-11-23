@@ -5,7 +5,8 @@
 			  	<div class="input-group">
 			    	<%= text_field_tag :q, params[:q], class: "form-control", placeholder: "Search..." %>
 			    	<span class="input-group-btn">
-			    		<%= button_tag(type: 'submit', class: "btn btn-primary", id: "search_button") do %>
+			    		<%= button_tag(type: 'submit', class: "btn btn-primary", 
+			    			id: "search_button") do %>
 			    			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 			    		<% end %>
 			    	</span>
@@ -16,64 +17,69 @@
 		<hr />
 
 		<h3>Advanced Search</h3>
-		
-		<div class="panel panel-primary">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">Vehicle Brands and Models</h3>
-		  </div>
-		  <div class="panel-body">
-		    <%= label_tag :vehicle_brand, "Vehicle brand: " %><br />    
-				<%= select_tag "search_vehicle_brand", options_from_collection_for_select(@vehicle_brands, "id", "name") , prompt: "Select...", class: "form-control" %>
-		  	
-		  	<br />
 
-		    <%= label_tag :vehicle_model, "Vehicle model: " %><br />    
-				<%= select_tag "search_vehicle_model", {}, class: "form-control", 
-				disabled: true %>
-		  </div>
-		</div>
+		<%= form_tag advanced_search_path, method: :get do %>		
+			<div class="panel panel-primary">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">Vehicle Brands and Models</h3>
+			  </div>
+			  <div class="panel-body">
+			    <%= label_tag :vehicle_brand, "Vehicle brand: " %><br />    
+					<%= select_tag "search_vehicle_brand", options_from_collection_for_select(@vehicle_brands, "id", "name") , prompt: "Select...", class: "form-control" %>
+			  	
+			  	<br />
 
-		<div class="panel panel-primary">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">Price</h3>
-		  </div>
-		  <div class="panel-body">
-		  	<div class="row">
-			    <div class="col-md-5">
-			    	<%= raw generate_price_select("min_price", "min_price") %>
-			    </div>	
+			    <%= label_tag :vehicle_model, "Vehicle model: " %><br />    
+					<%= select_tag "search_vehicle_model", {}, class: "form-control", 
+					disabled: true %>
+			  </div>
+			</div>
 
-					<div class="col-md-2">to</div>							
+			<div class="panel panel-primary">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">Price</h3>
+			  </div>
+			  <div class="panel-body">
+			  	<div class="row">
+				    <div class="col-md-5">
+				    	<%= raw generate_price_select("min_price", "min_price") %>
+				    </div>	
 
-					<div class="col-md-5">
-			    	<%= raw generate_price_select("max_price", "max_price") %>
+						<div class="col-md-2">to</div>							
+
+						<div class="col-md-5">
+				    	<%= raw generate_price_select("max_price", "max_price") %>
+				    </div>
 			    </div>
-		    </div>
-		  </div>
-		</div>
+			  </div>
+			</div>
 
-		<div class="panel panel-primary">
-		  <div class="panel-heading">
-		    <h3 class="panel-title">Year</h3>
-		  </div>
-		  <div class="panel-body">
-		  	<div class="row">
-			    <div class="col-md-5">
-			    	<%= select_tag "year", options_for_select((1980..Date.today.year).to_a), class: "form-control", id: "min_year", name: "min_year", prompt: "Any" %>
-			    </div>	
+			<div class="panel panel-primary">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">Year</h3>
+			  </div>
+			  <div class="panel-body">
+			  	<div class="row">
+				    <div class="col-md-5">
+				    	<%= select_tag "year", options_for_select((1980..Date.today.year).to_a), class: "form-control", id: "min_year", name: "min_year", prompt: "Any" %>
+				    </div>	
 
-					<div class="col-md-2">to</div>							
+						<div class="col-md-2">to</div>							
 
-					<div class="col-md-5">
-			    	<%= select_tag "year", options_for_select((1980..Date.today.year).to_a), class: "form-control", id: "max_year", name: "max_year", prompt: "Any" %>
+						<div class="col-md-5">
+				    	<%= select_tag "year", options_for_select((1980..Date.today.year).to_a), class: "form-control", id: "max_year", name: "max_year", prompt: "Any" %>
+				    </div>
 			    </div>
-		    </div>
-		  </div>
-		</div><!-- panel -->
+			  </div>
+			</div><!-- panel -->
 
-		<% @category.search_options.each_with_index do |option, index| %>
-			<%= print_sidebar_panel(option[:title], option[:select_name], option[:items_name]) %>
+			<% Category.search_options(@category.name).each_with_index do |option, index| %>
+				<%= print_sidebar_panel(option[:title], option[:select_name], option[:items_name]) %>
+			<% end %>
+
+			<%= hidden_field_tag(:category, @category.id) %>
+
+			<%= button_tag "Search", type: 'submit', class: 'btn btn-primary btn-block', id: 'advanced_search_button' %>
 		<% end %>
-
 	</div>
 </div><!-- row -->

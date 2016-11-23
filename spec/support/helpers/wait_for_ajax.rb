@@ -6,6 +6,8 @@ module WaitForAjax
    	end
  
    	def finished_all_ajax_requests?
-		page.evaluate_script('jQuery.active').zero?
-   	end
+	  	request_count = page.evaluate_script("$.active").to_i
+	  	request_count && request_count.zero?
+		rescue Timeout::Error
+	end
 end

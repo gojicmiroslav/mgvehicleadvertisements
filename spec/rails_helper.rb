@@ -71,4 +71,5 @@ RSpec.configure do |config|
   end
 
   config.include ShowMeTheCookies, :type => :feature
+  config.include WaitForAjax, type: :feature
 end
