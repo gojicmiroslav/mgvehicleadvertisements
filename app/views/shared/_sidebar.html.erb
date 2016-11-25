@@ -3,7 +3,7 @@
 		<div class="panel panel-primary" style="margin-top: 53px">
 			<%= form_tag search_path, method: :get do %>
 			  	<div class="input-group">
-			    	<%= text_field_tag :q, params[:q], class: "form-control", placeholder: "Search..." %>
+			    	<%= text_field_tag :q, params[:q], class: "form-control search_term", placeholder: "Search..." %>
 			    	<span class="input-group-btn">
 			    		<%= button_tag(type: 'submit', class: "btn btn-primary", 
 			    			id: "search_button") do %>
@@ -83,3 +83,9 @@
 		<% end %>
 	</div>
 </div><!-- row -->
+
+<script>
+$("#q").autocomplete({
+	source: '/search_term',
+});
+</script>
