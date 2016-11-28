@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get  'contact' => 'static_pages#contact'
   get  'search', to: 'search#search'
   get  'advanced_search', to: 'search#advanced_search'
-  get  'search_term', to: 'items#search_term'
+  resources :search_suggestions, only: :index
 
   devise_for :users, :controllers => { :registrations => :registrations }
   resources :users, only: :show
