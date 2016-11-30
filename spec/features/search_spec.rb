@@ -68,6 +68,14 @@ RSpec.feature "Search", :feature do
 						expect(page).to have_content(advertisements(:first_advertisement).title)
 						#expect(page.all("a[@id='advertisement_#{advertisements(:first_advertisement).id}']").count).to eq(1)
 					end	
+
+					scenario "with single word as part of multiple value in database" do
+						visit root_path
+						fill_in("q", with: "Astra")
+						click_on 'search_button'
+						expect(page).to have_content(advertisements(:first_advertisement).title)
+						expect(page).to have_content(advertisements(:third_advertisement).title)
+					end
 				end
 
 				describe "multiple keywords" do
@@ -88,6 +96,17 @@ RSpec.feature "Search", :feature do
 						expect(page).to have_content(advertisements(:first_advertisement).title)
 						expect(page).to have_content(advertisements(:second_advertisement).title)
 						expect(page).not_to have_content(advertisements(:third_advertisement).title)
+					end		
+
+					scenario "multiple keywords from vehicle model" do
+						visit root_path
+						fill_in("q", with: "Astra G")
+						click_on 'search_button'
+						expect(page).to have_content(advertisements(:first_advertisement).title)
+						expect(page).to have_content(advertisements(:third_advertisement).title)
+						expect(page).to have_content(advertisements(:advertisement_4).title)
+						expect(page).not_to have_content(advertisements(:second_advertisement).title)
+						expect(page).not_to have_content(advertisements(:advertisement_8).title)
 					end
 				end
 			end	
