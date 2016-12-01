@@ -111,14 +111,14 @@ class Advertisement < ApplicationRecord
     		results = Advertisement
 					.left_outer_joins(:advertisement_informations)
 					.joins(vehicle_model: :vehicle_brand)
-					.select("`advertisements`.*, `vehicle_models`.`name`, `vehicle_brands`.`name`")
-					.where("`advertisements`.`title` LIKE ? OR `advertisement_informations`.`value` LIKE ? OR `vehicle_brands`.`name` LIKE ? OR `vehicle_models`.`name` LIKE ?",
+					.select("advertisements.*, vehicle_models.name, vehicle_brands.name")
+					.where("advertisements.title LIKE ? OR advertisement_informations.value LIKE ? OR vehicle_brands.name LIKE ? OR vehicle_models.name LIKE ?",
 							 "%#{search.first}%", "%#{search.first}%", "%#{search.first}%", "%#{search.first}%")
 					.distinct
         elsif search.size > 1
-        	searchable_columns = ["`advertisements`.`title`", 
-        						  "`advertisement_informations`.`value`", 
-        						  "`vehicle_brands`.`name`"]
+        	searchable_columns = ["advertisements.title", 
+        						  "advertisement_informations.value", 
+        						  "vehicle_brands.name"]
         	
         	query = search.map do |term|
         	 	fields = searchable_columns.map do |column|
@@ -127,9 +127,9 @@ class Advertisement < ApplicationRecord
         	end.join(' OR ')
 
         	results = Advertisement
-    				.left_outer_joins(:advertisement_informations)
+    				.joins(:advertisement_informations)
     				.joins(vehicle_model: :vehicle_brand)
-    				.select("`advertisements`.*, `vehicle_models`.`name`, `vehicle_brands`.`name`")
+    				.select("advertisements.*, vehicle_models.name, vehicle_brands.name")
     				.where(query)
     				.distinct
     	else
