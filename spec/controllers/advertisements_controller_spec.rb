@@ -1,23 +1,60 @@
 require 'rails_helper'
 
 RSpec.describe AdvertisementsController, type: :controller do
-  fixtures :advertisement_types
-  fixtures :users
-  fixtures :information_types
-  fixtures :information
-  fixtures :items
-  fixtures :categories
-  fixtures :vehicle_brands
-  fixtures :vehicle_models
-  fixtures :options
-  fixtures :advertisements
+	fixtures :advertisement_types
+	fixtures :users
+	fixtures :information_types
+	fixtures :information
+	fixtures :items
+	fixtures :categories	
+	fixtures :vehicle_brands
+	fixtures :vehicle_models
+	fixtures :options
+	fixtures :advertisements
+	fixtures :advertisement_information
 
-  	shared_examples 'public access to advertisement' do    
-	    describe "GET show" do      
+	shared_examples 'public access to advertisement' do    
+    describe "GET show" do      
 			let(:advertisement) { advertisements(:first_advertisement) }
 			let(:power_locks) { options(:power_locks) }
 			let(:cd_player) { options(:cd_player) }
 			let(:sunroof) { options(:sunroof) }
+
+			# basic information
+			let(:capacity){ information(:capacity) }
+			let(:power){ information(:power) }
+			let(:mileage){ information(:mileage) }
+
+			# additional information
+			let(:fuel){ information(:fuel) }
+			let(:style){ information(:style) }
+			let(:drive){ information(:drive) }
+			let(:transmission){ information(:transmission) }
+			let(:air_condition){ information(:air_condition) }
+			let(:engine){ information(:engine) }
+			let(:exterior_color){ information(:exterior_color) }
+			let(:interior_color){ information(:interior_color) }
+
+			let(:basic_advertisement_information_hash) do
+				{
+					mileage.name => "4500",
+					power.name => "4500",
+					capacity.name => "3000"
+				}
+			end
+
+			let(:additional_advertisement_information_hash) do
+				{
+					fuel.name => 'Diesel',
+					style.name => 'Commercial',
+					drive.name => 'AWD',
+					transmission.name => 'Manual',
+					air_condition.name => 'Automatic',
+					engine.name => '8 cylinder',
+					exterior_color.name => 'Black',
+					interior_color.name => 'Silver'
+				}
+			end
 
 			it 'renders :show template' do
 				get :show, id: advertisement
@@ -28,68 +65,70 @@ RSpec.describe AdvertisementsController, type: :controller do
 				get :show, id: advertisement
 				expect(assigns(:advertisement)).to eq(advertisement)
 				expect(assigns(:options)).to match([power_locks, cd_player, sunroof])
+				expect(assigns(:basic_advertisement_informations)).to match(basic_advertisement_information_hash)
+				expect(assigns(:additional_advertisement_informations)).to match(additional_advertisement_information_hash)
 			end
-	    end
-  	end
+    end
+	end
 
-  	describe "guest user" do
-    	it_behaves_like 'public access to advertisement'
+	describe "guest user" do
+  	it_behaves_like 'public access to advertisement'
 
-	    let(:advertisement) { advertisements(:first_advertisement) }
+    let(:advertisement) { advertisements(:first_advertisement) }
 
-	    let(:valid_data) do
-	      {
-	        title: "Valid title for advertisement",
-	        price: 20000,
-	        year: Time.now,
-	        category: Category.find_by(name: "Cars"),
-	        vehicle_model: VehicleModel.find_by(name: "Astra G"),
-	        user: User.first
-	      }
-	    end
+    let(:valid_data) do
+      {
+        title: "Valid title for advertisement",
+        price: 20000,
+        year: Time.now,
+        category: Category.find_by(name: "Cars"),
+        vehicle_model: VehicleModel.find_by(name: "Astra G"),
+        user: User.first
+      }
+    end
 
-	    describe "GET index" do      
+    describe "GET index" do      
 			it 'redirects to login page' do
-	        	get :index
-	        	expect(response).to redirect_to(new_user_session_path)
-	      	end  
-	    end
+      	get :index
+      	expect(response).to redirect_to(new_user_session_path)
+    	end  
+    end
 
-	    describe 'GET new' do
-	      	it 'redirects to login page' do
-	        	get :new
-	        	expect(response).to redirect_to(new_user_session_path)
-	      	end
-	    end
+    describe 'GET new' do
+      	it 'redirects to login page' do
+        	get :new
+        	expect(response).to redirect_to(new_user_session_path)
+      	end
+    end
 
-	    describe 'POST create' do
-	      	it "redirects to login page" do
-	        	post :create, advertisement: FactoryGirl.attributes_for(:advertisement)
-	        	expect(response).to redirect_to(new_user_session_path)
-	      	end
-	    end
+    describe 'POST create' do
+      	it "redirects to login page" do
+        	post :create, advertisement: FactoryGirl.attributes_for(:advertisement)
+        	expect(response).to redirect_to(new_user_session_path)
+      	end
+    end
 
-	    describe 'GET edit' do
-	      	it "redirects to login page" do
-	        	get :edit, id: advertisement
-	        	expect(response).to redirect_to(new_user_session_path)
-	      	end
-	    end
+    describe 'GET edit' do
+      	it "redirects to login page" do
+        	get :edit, id: advertisement
+        	expect(response).to redirect_to(new_user_session_path)
+      	end
+    end
 
-	    describe 'PUT update' do
-	      	it "redirects to login page" do
-	        	put :update, id: advertisement, advertisement: valid_data 
-	        	expect(response).to redirect_to(new_user_session_path)
-	      	end
-	    end
+    describe 'PUT update' do
+      	it "redirects to login page" do
+        	put :update, id: advertisement, advertisement: valid_data 
+        	expect(response).to redirect_to(new_user_session_path)
+      	end
+    end
 
-	    describe "DELETE destroy" do
-	      	it "redirects to login page" do
-	        	delete :destroy, id: advertisement
-	        	expect(response).to redirect_to(new_user_session_path)
-	      	end
-	    end
-  	end
+    describe "DELETE destroy" do
+      	it "redirects to login page" do
+        	delete :destroy, id: advertisement
+        	expect(response).to redirect_to(new_user_session_path)
+      	end
+    end
+	end
 
 	describe "authenticated user" do
 		let(:user){ users(:pera) }

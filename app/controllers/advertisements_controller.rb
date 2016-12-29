@@ -10,29 +10,9 @@ class AdvertisementsController < ApplicationController
   end
 
   def show    
-    @basic_advertisement_informations = {}
-    @additional_advertisement_informations = {}
-    basic_information_id = InformationType.find_by(name: "Basic").id
-    additional_information_id = InformationType.find_by(name: "Additional").id
-
-    @advertisement.informations.each do |info|
-      if info.information_type.id == basic_information_id
-        @basic_advertisement_informations[info.name] = ""
-      elsif info.information_type.id == additional_information_id
-        @additional_advertisement_informations[info.name] = ""
-      end
-    end
-
-    @advertisement.advertisement_informations.each do |adv_info|
-      if @basic_advertisement_informations.has_key?(adv_info.information.name)
-        @basic_advertisement_informations[adv_info.information.name] = adv_info.value
-      elsif @additional_advertisement_informations.has_key?(adv_info.information.name)
-        @additional_advertisement_informations[adv_info.information.name] = adv_info.value
-      end     
-    end
-
+    @basic_advertisement_informations = @advertisement.get_basic_advertisement_information
+    @additional_advertisement_informations = @advertisement.get_additional_advertisement_information
     @options = @advertisement.options
-    #@comments = @advertisement.comments
     @comments = prepare_comments(@advertisement.comments)
   end
 

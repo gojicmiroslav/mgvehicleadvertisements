@@ -3,11 +3,8 @@ class AdvertisementInformation < ActiveRecord::Base
 	belongs_to :advertisement
 	
 	def self.get_advertisement_information advertisement, information
-		if advertisement == nil || information == nil
-			return nil
-		end
+		return if advertisement.nil? or information.nil?
 
-		# ActiveRecord::Relation
 		advertisement_information = AdvertisementInformation.where("advertisement_id = ? AND information_id = ?", 
 																	advertisement.id, information.id)
 

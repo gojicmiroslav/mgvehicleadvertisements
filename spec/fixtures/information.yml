@@ -64,4 +64,8 @@ interior_color:
 
 carrying_capacity:
  name: Carrying Capacity
- information_type: additional   
+ information_type: additional 
+
+no_items_information:
+ name: No Items Information
+ information_type: additional  

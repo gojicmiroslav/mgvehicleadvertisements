@@ -32,24 +32,90 @@ class Advertisement < ApplicationRecord
 	enum status: [:active, :inactive, :pending, :rejected]
 
 	scope :active, -> { where(status: self.statuses[:active]) }
-
+  scope :title_like_term, -> (term) { where("title like ?", "%#{term}%") }
 	after_commit :send_email, if: :status_changed?
+
+  # Refactoring =====================================================================================
+  def get_basic_advertisement_information
+    basic_information_id = InformationType.get_id_by_name("Basic")
+    return if basic_information_id.nil?
+
+    basic_advertisement_informations = create_initial_information_array_for(basic_information_id)
+
+    fill_initial_arr_for(basic_advertisement_informations)
+  end
+
+  def get_additional_advertisement_information
+    additional_information_id = InformationType.get_id_by_name("Additional")
+    return if additional_information_id.nil?
+
+    additional_advertisement_informations = create_initial_information_array_for(additional_information_id)
+
+    fill_initial_arr_for(additional_advertisement_informations)
+  end
+
+  def create_initial_information_array_for(id)
+    information_arr = {}
+
+    informations.each do |info|
+      if info.information_type.id == id
+        information_arr[info.name] = ""
+      end
+    end
+
+    information_arr
+  end
+
+  def fill_initial_arr_for(information_arr)
+    return if information_arr.nil? or information_arr.empty?
+
+    advertisement_informations.each do |adv_info|
+      if information_arr.has_key?(adv_info.information.name)
+        information_arr[adv_info.information.name] = adv_info.value
+      end     
+    end
+
+    information_arr
+  end
+  #=================================================================================================
 
 	# TODO - ovo refaktorisati
 	def save_all advertisement_informations
-		advertisement_informations ||= {}
-	  	advertisement_informations.each do |info_id, value|
-	  		a = AdvertisementInformation.create(
-        			advertisement: self,
-        			information: Information.find(info_id),
-        			value: value
-      			)
-	  		self.advertisement_informations << a
-	  	end
+    set_advertisement_informations unless advertisement_informations.nil?
 
-	  	self.pending!
-		self.save
+  	self.pending!
+		self.save!
 	end
+
+  def set_advertisement_informations
+    advertisement_informations.each do |info_id, value|
+      a = new_advertisement_information(info_id, value)
+      self.advertisement_informations << a
+    end
+  end
+
+  def new_advertisement_information(info_id, value)
+    return if info_id.nil? or value.nil? or value.eql?("")
+
+    information = find_information(info_id)
+    return if information.nil?
+
+    AdvertisementInformation.new(
+      advertisement: self,
+      information: information,
+      value: value
+    )
+  end
+
+  def find_information(id)
+    begin
+      Information.find(id)
+    rescue
+      nil
+    end
+  end
+
+  #=================================================================================================
 
 	def update_all(advertisement_params, informations)
 		self.advertisement_informations.each do |info|
@@ -97,8 +163,6 @@ class Advertisement < ApplicationRecord
        		[:title, :year, :price]
 		]
     end
-
-    scope :title_like_term, -> (term) { where("title like ?", "%#{term}%") }
 
     def self.search(q, paginate)
     	q.gsub!(/[^a-zA-Z0-9\-]/," ") 
